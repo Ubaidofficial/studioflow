@@ -50,6 +50,14 @@
 - **Shortcut Pill Badges**: Overlay realistic keyboard shortcut badges (e.g., `⌘ + K`, `Ctrl + S`).
 - **Voice Clarity Filter**: Built-in audio equalization to enhance vocal presence.
 
+### 6. EasyUI Animated Motion Suite ([Surajmaurya1/easyui](https://github.com/Surajmaurya1/easyui))
+- **Dynamic Island Status Pill (`DynamicIsland.tsx`)**: Header capsule morphing dynamically between idle ready state, recording timecounter with audio wave pulses, and WebCodecs export percentage.
+- **Global ⌘K Command Palette (`CommandMenu.tsx`)**: Full keyboard-driven command menu for lightning-fast action execution, frame switching, and shortcut reference.
+- **Cursor Spotlight Following Cards (`SpotlightCard.tsx`)**: Precision radial lighting and hairline border illumination tracking mouse movement across inspector cards and modal dialogs.
+- **Magnetic Proximity Action Buttons (`MagneticButton.tsx`)**: Physical spring attraction pulling key buttons toward the cursor on hover.
+- **Engineering DotField Stage Backdrop (`DotField.tsx`)**: Subtle dot grid pattern behind the workspace canvas with smooth radial vignette falloff.
+- **Elastic Stretch Switches (`StretchSwitch.tsx`)**: Organic spring physics with physical elongation on click.
+
 ---
 
 ## ⏱️ Export Engine: WebCodecs vs. Real-Time Recorders
@@ -94,12 +102,14 @@ Then visit **`http://localhost:4173`** in your browser.
 
 | Key | Action |
 | :--- | :--- |
+| `⌘K` / `Ctrl + K` | Open EasyUI Command Menu Palette |
 | `Space` | Play / Pause video preview |
 | `S` | Split selected clip at current playhead position |
 | `Z` | Add a new Zoom keyframe block at playhead |
 | `Delete` / `Backspace` | Remove selected clip, zoom, or redaction block |
 | `←` / `→` | Step playhead backward / forward by 0.2s |
 | `Shift + ←` / `Shift + →` | Step playhead backward / forward by 2.0s |
+| `Esc` | Dismiss modals or Command Menu |
 
 ---
 

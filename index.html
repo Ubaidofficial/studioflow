@@ -511,7 +511,7 @@
       border: 1px solid var(--hair-strong);
       border-radius: 99px;
       cursor: pointer;
-      transition: background 0.15s;
+      transition: background-color 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.22s;
     }
     .switch-track::after {
       content: "";
@@ -522,8 +522,11 @@
       height: 13px;
       border-radius: 50%;
       background: #FFFFFF;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.3);
-      transition: transform 0.15s var(--ease);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), width 0.15s ease;
+    }
+    .switch:active .switch-track::after {
+      width: 17px;
     }
     input:checked + .switch-track { background: var(--accent); border-color: var(--accent); }
     input:checked + .switch-track::after { transform: translateX(13px); }
@@ -852,6 +855,231 @@
 
     /* Hidden File Upload */
     input[type="file"] { display: none; }
+
+    /* =========================================================================
+       EasyUI Design Components (Surajmaurya1/easyui)
+       ========================================================================= */
+
+    /* 1. EasyUI Spotlight Effect (SpotlightCard.tsx) */
+    .easyui-spotlight {
+      position: relative;
+    }
+    .easyui-spotlight::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: radial-gradient(var(--spotlight-size, 260px) circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px), var(--spotlight-border, rgba(255, 255, 255, 0.22)), transparent 70%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      z-index: 2;
+    }
+    .easyui-spotlight::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(var(--spotlight-size, 340px) circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px), var(--spotlight-glow, rgba(56, 189, 248, 0.05)), transparent 80%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      z-index: 1;
+    }
+    .easyui-spotlight:hover::before,
+    .easyui-spotlight:hover::after {
+      opacity: 1;
+    }
+
+    /* 2. EasyUI Magnetic Proximity Button (MagneticButton.tsx) */
+    .easyui-magnetic {
+      position: relative;
+      transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+      will-change: transform;
+    }
+    .easyui-magnetic:active {
+      transform: scale(0.96) !important;
+    }
+
+    /* 3. EasyUI DotField Stage Grid (DotField.tsx) */
+    .stage-dotfield {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(var(--dotfield-color, rgba(255, 255, 255, 0.09)) 1px, transparent 1px);
+      background-size: 20px 20px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 85%);
+      -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 85%);
+      opacity: 0.75;
+      z-index: 1;
+    }
+    :root[data-theme="light"] .stage-dotfield {
+      --dotfield-color: rgba(15, 23, 42, 0.12);
+    }
+
+    /* 4. EasyUI Dynamic Island Status & Command Capsule (DynamicIsland.tsx) */
+    .dynamic-island {
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 99px;
+      background: var(--bg-sunken);
+      border: 1px solid var(--hair-subtle);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 560;
+      color: var(--ink-2);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .dynamic-island:hover {
+      background: var(--bg-surface-2);
+      border-color: var(--hair-strong);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+    .island-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 8px var(--teal);
+      flex: none;
+    }
+    .island-kbd {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: var(--bg-surface);
+      border: 1px solid var(--hair);
+      color: var(--ink-3);
+    }
+    .dynamic-island.recording {
+      background: rgba(239, 68, 68, 0.12);
+      border-color: rgba(239, 68, 68, 0.35);
+      color: #F87171;
+    }
+    .dynamic-island.recording .island-dot {
+      background: var(--rec);
+      box-shadow: 0 0 10px var(--rec);
+      animation: recPulse 1s infinite;
+    }
+
+    /* 5. EasyUI Command Menu Palette (CommandMenu.tsx) */
+    .command-modal {
+      width: 580px;
+      max-width: calc(100% - 32px);
+      background: var(--bg-surface);
+      border: 1px solid var(--hair-strong);
+      border-radius: 16px;
+      box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.8), var(--shadow-inset);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.97) translateY(-10px);
+      transition: transform 0.18s var(--ease), opacity 0.18s;
+    }
+    .modal-scrim.open .command-modal {
+      transform: scale(1) translateY(0);
+    }
+    .command-search-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--hair);
+      background: var(--bg-surface);
+    }
+    .command-search-box svg {
+      width: 17px;
+      height: 17px;
+      color: var(--ink-3);
+      flex: none;
+    }
+    .command-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 13.5px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .command-input::placeholder {
+      color: var(--ink-3);
+    }
+    .command-results {
+      max-height: 380px;
+      overflow-y: auto;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      scrollbar-width: thin;
+    }
+    .command-group-title {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-3);
+      padding: 8px 10px 4px;
+    }
+    .command-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--ink-2);
+      font-size: 13px;
+      transition: all 0.1s;
+      user-select: none;
+    }
+    .command-item:hover,
+    .command-item.selected {
+      background: var(--bg-sunken);
+      color: var(--ink);
+    }
+    .command-item-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .command-item-left svg {
+      width: 15px;
+      height: 15px;
+      color: var(--ink-3);
+      flex: none;
+    }
+    .command-item.selected .command-item-left svg {
+      color: var(--accent);
+    }
+    .command-shortcut {
+      font-family: var(--f-mono);
+      font-size: 11px;
+      color: var(--ink-3);
+      background: var(--bg-surface-2);
+      border: 1px solid var(--hair);
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+    .command-foot {
+      padding: 9px 16px;
+      border-top: 1px solid var(--hair);
+      background: var(--bg-surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--ink-3);
+    }
   </style>
 </head>
 <body>
@@ -876,29 +1104,36 @@
         </div>
       </div>
 
+      <!-- EasyUI Dynamic Island Status & Command Pill (DynamicIsland.tsx) -->
+      <div class="dynamic-island easyui-magnetic" id="dynamicIsland" title="Click or press ⌘K for Command Menu">
+        <span class="island-dot"></span>
+        <span class="island-text" id="islandText">StudioFlow 2026 • Ready</span>
+        <kbd class="island-kbd">⌘K</kbd>
+      </div>
+
       <div class="top-actions">
         <!-- Light / Dark Mode Toggle -->
-        <button class="btn btn-ghost" id="btnThemeToggle" title="Toggle Light / Dark mode" style="width:32px; height:32px; padding:0;">
+        <button class="btn btn-ghost easyui-magnetic" id="btnThemeToggle" title="Toggle Light / Dark mode" style="width:32px; height:32px; padding:0;">
           <svg id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display:none;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
 
-        <button class="btn btn-ghost" id="btnLoadDemo" title="Load sample recording with realistic typing & clicks">
+        <button class="btn btn-ghost easyui-magnetic" id="btnLoadDemo" title="Load sample recording with realistic typing & clicks">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
           Try Demo
         </button>
 
-        <button class="btn" id="btnUpload" title="Import video file (MP4, WebM)">
+        <button class="btn easyui-magnetic" id="btnUpload" title="Import video file (MP4, WebM)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
           Import Video
         </button>
 
-        <button class="btn btn-rec" id="btnRecordModal" title="Record Screen + Webcam">
+        <button class="btn btn-rec easyui-magnetic" id="btnRecordModal" title="Record Screen + Webcam">
           <span class="rec-pulse"></span>
           Record Screen
         </button>
 
-        <button class="btn btn-primary" id="btnExportModal" title="Export polished video via WebCodecs hardware encoder">
+        <button class="btn btn-primary easyui-magnetic" id="btnExportModal" title="Export polished video via WebCodecs hardware encoder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 12v6.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V12"/><path d="M12 15V4"/><path d="m7.5 8.5 4.5-4.5 4.5 4.5"/></svg>
           Export Video
         </button>
@@ -910,8 +1145,11 @@
 
       <!-- Left Stage Viewport -->
       <section class="stage">
+        <!-- EasyUI DotField Engineering Grid Backdrop -->
+        <div class="stage-dotfield"></div>
+
         <!-- Floating Aspect Ratio Island -->
-        <div class="stage-island" id="stageAspectBar">
+        <div class="stage-island easyui-spotlight" id="stageAspectBar">
           <button class="active" data-aspect="16:9">16:9</button>
           <button data-aspect="9:16">9:16 (Shorts)</button>
           <button data-aspect="1:1">1:1</button>
@@ -940,7 +1178,7 @@
         <div class="inspector-body">
 
           <!-- 1. Frame & Device Mockup -->
-          <div class="sect">
+          <div class="sect easyui-spotlight">
             <div class="sect-title">Device Frame Mockup</div>
             <div class="seg" id="segFrame">
               <button class="active" data-frame="mac">macOS</button>
@@ -975,7 +1213,7 @@
           </div>
 
           <!-- 2. Studio Backgrounds -->
-          <div class="sect">
+          <div class="sect easyui-spotlight">
             <div class="sect-title">Studio Background</div>
             <div class="swatches" id="bgSwatches">
               <!-- Swatches injected by JS -->
@@ -991,7 +1229,7 @@
           </div>
 
           <!-- 3. Smart Zoom & Motion -->
-          <div class="sect">
+          <div class="sect easyui-spotlight">
             <div class="sect-title">
               <span>Zoom & Focus</span>
               <button class="btn btn-ghost" id="btnAutoZoom" style="height:22px; padding:0 6px; font-size:11px; color:var(--accent);">
@@ -1029,7 +1267,7 @@
           </div>
 
           <!-- 4. Dynamic Webcam Bubble (Bolo inspired talking head) -->
-          <div class="sect">
+          <div class="sect easyui-spotlight">
             <div class="sect-title">
               <span>Webcam Presenter Bubble</span>
               <label class="switch">
@@ -1077,7 +1315,7 @@
           </div>
 
           <!-- 5. Privacy Censor & Annotations -->
-          <div class="sect">
+          <div class="sect easyui-spotlight">
             <div class="sect-title">Privacy & Annotations</div>
             <button class="btn" id="btnAddBlurBox" style="width:100%;">
               🔒 + Drop Privacy Redaction Blur
@@ -1186,7 +1424,7 @@
 
   <!-- Export Modal -->
   <div class="modal-scrim" id="exportModal">
-    <div class="card-modal">
+    <div class="card-modal easyui-spotlight">
       <div class="modal-head">
         <h3>Export Studio Video</h3>
         <button class="btn btn-ghost" id="btnCloseExport" style="width:28px; height:28px; padding:0;">✕</button>
@@ -1229,7 +1467,7 @@
       </div>
       <div class="modal-foot">
         <button class="btn" id="btnCancelExport">Cancel</button>
-        <button class="btn btn-primary" id="btnStartExport">
+        <button class="btn btn-primary easyui-magnetic" id="btnStartExport">
           Render & Download (.mp4)
         </button>
       </div>
@@ -1238,7 +1476,7 @@
 
   <!-- Screen Recording Modal -->
   <div class="modal-scrim" id="recordModal">
-    <div class="card-modal">
+    <div class="card-modal easyui-spotlight">
       <div class="modal-head">
         <h3>Record Screen & Camera</h3>
         <button class="btn btn-ghost" id="btnCloseRecord" style="width:28px; height:28px; padding:0;">✕</button>
@@ -1268,9 +1506,30 @@
       </div>
       <div class="modal-foot">
         <button class="btn" id="btnCancelRecord">Cancel</button>
-        <button class="btn btn-primary" id="btnStartRecordingNow">
+        <button class="btn btn-primary easyui-magnetic" id="btnStartRecordingNow">
           Select Screen & Record
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EasyUI Command Menu (⌘K Palette - CommandMenu.tsx) -->
+  <div class="modal-scrim" id="commandModal">
+    <div class="command-modal easyui-spotlight" id="commandCard">
+      <div class="command-search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="command-input" id="commandInput" placeholder="Type a command or search actions..." autocomplete="off" spellcheck="false">
+        <kbd class="island-kbd" id="btnCloseCommand" style="cursor:pointer;" title="Press Escape to close">ESC</kbd>
+      </div>
+      <div class="command-results" id="commandResults">
+        <!-- Injected dynamically by JS -->
+      </div>
+      <div class="command-foot">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span>Navigate <kbd class="island-kbd">↑</kbd> <kbd class="island-kbd">↓</kbd></span>
+          <span>Execute <kbd class="island-kbd">↵</kbd></span>
+        </div>
+        <span>EasyUI ⌘K Engine</span>
       </div>
     </div>
   </div>
@@ -2137,6 +2396,7 @@
 
         this.initUI();
         this.initHotkeys();
+        this.initEasyUI();
         this.startPreviewLoop();
 
         showToast('StudioFlow ready.');
@@ -2313,6 +2573,29 @@
 
       initHotkeys() {
         window.addEventListener('keydown', (e) => {
+          // Allow Command Menu shortcut anywhere except when typing in commandInput
+          if ((e.metaKey || e.ctrlKey) && e.code === 'KeyK') {
+            e.preventDefault();
+            const isOpen = $('#commandModal').classList.contains('open');
+            this.toggleCommandMenu(!isOpen);
+            return;
+          }
+
+          if (e.code === 'Escape') {
+            if ($('#commandModal').classList.contains('open')) {
+              this.toggleCommandMenu(false);
+              return;
+            }
+            if ($('#exportModal').classList.contains('open')) {
+              $('#exportModal').classList.remove('open');
+              return;
+            }
+            if ($('#recordModal').classList.contains('open')) {
+              $('#recordModal').classList.remove('open');
+              return;
+            }
+          }
+
           if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
 
           if (e.code === 'Space') {
@@ -2334,6 +2617,225 @@
             this.deleteSelected();
           }
         });
+      },
+
+      initEasyUI() {
+        // 1. EasyUI Spotlight tracking (SpotlightCard.tsx)
+        const initSpotlights = () => {
+          $$('.easyui-spotlight').forEach(card => {
+            if (card._spotlightInit) return;
+            card._spotlightInit = true;
+            card.addEventListener('mousemove', (e) => {
+              const r = card.getBoundingClientRect();
+              card.style.setProperty('--mouse-x', `${e.clientX - r.left}px`);
+              card.style.setProperty('--mouse-y', `${e.clientY - r.top}px`);
+            });
+            card.addEventListener('mouseleave', () => {
+              card.style.setProperty('--mouse-x', '-1000px');
+              card.style.setProperty('--mouse-y', '-1000px');
+            });
+          });
+        };
+        initSpotlights();
+
+        // 2. EasyUI Magnetic Proximity Button physics (MagneticButton.tsx)
+        const initMagnetics = () => {
+          $$('.easyui-magnetic').forEach(btn => {
+            if (btn._magneticInit) return;
+            btn._magneticInit = true;
+            btn.addEventListener('mousemove', (e) => {
+              const r = btn.getBoundingClientRect();
+              const midX = e.clientX - (r.left + r.width / 2);
+              const midY = e.clientY - (r.top + r.height / 2);
+              const strength = 0.22;
+              btn.style.transform = `translate(${midX * strength}px, ${midY * strength}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+              btn.style.transform = 'translate(0px, 0px)';
+            });
+          });
+        };
+        initMagnetics();
+
+        // 3. EasyUI Dynamic Island Click -> Open Command Menu
+        $('#dynamicIsland').addEventListener('click', () => this.toggleCommandMenu(true));
+
+        // 4. EasyUI Command Menu Engine (CommandMenu.tsx)
+        this.initCommandMenu();
+      },
+
+      initCommandMenu() {
+        const modal = $('#commandModal');
+        const input = $('#commandInput');
+        const results = $('#commandResults');
+        const closeBtn = $('#btnCloseCommand');
+
+        const COMMAND_ITEMS = [
+          {
+            category: 'Actions & Export',
+            items: [
+              { id: 'rec', title: 'Record Screen & Camera', shortcut: 'Record', icon: '🔴', action: () => { $('#recordModal').classList.add('open'); } },
+              { id: 'export', title: 'Export Video via WebCodecs (.mp4)', shortcut: 'Export', icon: '🚀', action: () => { $('#exportModal').classList.add('open'); } },
+              { id: 'demo', title: 'Try Interactive Demo Studio', shortcut: 'Demo', icon: '⚡', action: () => { $('#btnLoadDemo').click(); } },
+              { id: 'import', title: 'Import Video File', shortcut: 'Import', icon: '📁', action: () => { $('#btnUpload').click(); } },
+              { id: 'snap', title: 'Snapshot Frame as PNG', shortcut: 'PNG', icon: '📸', action: () => { App.takeSnapshot(); } },
+            ]
+          },
+          {
+            category: 'Timeline & Editing',
+            items: [
+              { id: 'split', title: 'Split Clip at Playhead', shortcut: 'S', icon: '✂️', action: () => { App.splitClipAtPlayhead(); } },
+              { id: 'zoom', title: 'Add Zoom Keyframe at Playhead', shortcut: 'Z', icon: '🔍', action: () => { App.addZoomAtPlayhead(); } },
+              { id: 'autozoom', title: 'Auto-Detect Motion Zooms', shortcut: 'Auto', icon: '⚡', action: () => { App.triggerAutoZoom(); } },
+              { id: 'blur', title: 'Drop Privacy Redaction Blur', shortcut: 'Lock', icon: '🔒', action: () => { App.addBlurBox(); } },
+              { id: 'play', title: 'Play / Pause Video', shortcut: 'Space', icon: '▶️', action: () => { App.togglePlay(); } },
+              { id: 'delete', title: 'Delete Selected Item', shortcut: 'Del', icon: '🗑️', action: () => { App.deleteSelected(); } },
+            ]
+          },
+          {
+            category: 'View & Interface Modes',
+            items: [
+              { id: 'studio', title: 'Switch to Studio NLE Editor', shortcut: 'Studio', icon: '🎛️', action: () => { $('.mode-btn[data-mode="studio"]').click(); } },
+              { id: 'quick', title: 'Switch to Quick Recorder Mode', shortcut: 'Quick', icon: '⚡', action: () => { $('.mode-btn[data-mode="quick"]').click(); } },
+              { id: 'theme', title: 'Toggle Polarnatt Dark / Light Theme', shortcut: 'Theme', icon: '🌓', action: () => { $('#btnThemeToggle').click(); } },
+            ]
+          },
+          {
+            category: 'Aspect Ratios',
+            items: [
+              { id: 'ar-16-9', title: 'Aspect Ratio: 16:9 Standard Landscape', shortcut: '16:9', icon: '🖥️', action: () => { $('#stageAspectBar button[data-aspect="16:9"]').click(); } },
+              { id: 'ar-9-16', title: 'Aspect Ratio: 9:16 Shorts / Reels / TikTok', shortcut: '9:16', icon: '📱', action: () => { $('#stageAspectBar button[data-aspect="9:16"]').click(); } },
+              { id: 'ar-1-1', title: 'Aspect Ratio: 1:1 Square Feed', shortcut: '1:1', icon: '⏹️', action: () => { $('#stageAspectBar button[data-aspect="1:1"]').click(); } },
+              { id: 'ar-4-5', title: 'Aspect Ratio: 4:5 Social Portrait', shortcut: '4:5', icon: '📐', action: () => { $('#stageAspectBar button[data-aspect="4:5"]').click(); } },
+            ]
+          },
+          {
+            category: 'Device Frame Mockups',
+            items: [
+              { id: 'df-mac', title: 'Device Frame: macOS Window (Traffic Lights)', shortcut: 'macOS', icon: '💻', action: () => { $('#segFrame button[data-frame="mac"]').click(); } },
+              { id: 'df-browser', title: 'Device Frame: Modern Browser (URL Bar)', shortcut: 'Browser', icon: '🌐', action: () => { $('#segFrame button[data-frame="browser"]').click(); } },
+              { id: 'df-minimal', title: 'Device Frame: Clean Borderless Glass', shortcut: 'Clean', icon: '✨', action: () => { $('#segFrame button[data-frame="minimal"]').click(); } },
+              { id: 'df-none', title: 'Device Frame: None (Full Bleed Canvas)', shortcut: 'None', icon: '⬛', action: () => { $('#segFrame button[data-frame="none"]').click(); } },
+            ]
+          },
+          {
+            category: 'Camera & Presenter',
+            items: [
+              { id: 'cam-voice', title: 'Toggle Dynamic Voice-Reactive Bubble (Bolo)', shortcut: 'Voice', icon: '🎙️', action: () => { $('#chkCamDynamicVoice').click(); } },
+              { id: 'cam-visible', title: 'Toggle Webcam Visibility', shortcut: 'Cam', icon: '📹', action: () => { $('#chkCamVisible').click(); } },
+              { id: 'cam-mirror', title: 'Toggle Mirror Webcam', shortcut: 'Mirror', icon: '🪞', action: () => { $('#chkCamMirror').click(); } },
+            ]
+          }
+        ];
+
+        let selectedIdx = 0;
+        let flattenedFiltered = [];
+
+        const renderCommands = (filterQuery = '') => {
+          const q = filterQuery.toLowerCase().trim();
+          results.innerHTML = '';
+          flattenedFiltered = [];
+
+          COMMAND_ITEMS.forEach(cat => {
+            const matches = cat.items.filter(item => 
+              !q || item.title.toLowerCase().includes(q) || cat.category.toLowerCase().includes(q) || (item.shortcut && item.shortcut.toLowerCase().includes(q))
+            );
+
+            if (matches.length > 0) {
+              const grp = document.createElement('div');
+              grp.className = 'command-group-title';
+              grp.textContent = cat.category;
+              results.appendChild(grp);
+
+              matches.forEach(item => {
+                const globalIndex = flattenedFiltered.length;
+                flattenedFiltered.push(item);
+
+                const row = document.createElement('div');
+                row.className = `command-item ${globalIndex === selectedIdx ? 'selected' : ''}`;
+                row.innerHTML = `
+                  <div class="command-item-left">
+                    <span style="font-size:14px;">${item.icon}</span>
+                    <span>${item.title}</span>
+                  </div>
+                  <kbd class="command-shortcut">${item.shortcut}</kbd>
+                `;
+                row.addEventListener('click', () => {
+                  App.toggleCommandMenu(false);
+                  item.action();
+                });
+                row.addEventListener('mouseenter', () => {
+                  selectedIdx = globalIndex;
+                  updateSelectedCommand();
+                });
+                results.appendChild(row);
+              });
+            }
+          });
+
+          if (flattenedFiltered.length === 0) {
+            results.innerHTML = `<div style="padding:24px; text-align:center; color:var(--ink-3); font-size:12.5px;">No matching commands found.</div>`;
+          } else {
+            if (selectedIdx >= flattenedFiltered.length) selectedIdx = 0;
+            updateSelectedCommand();
+          }
+        };
+
+        const updateSelectedCommand = () => {
+          const items = results.querySelectorAll('.command-item');
+          items.forEach((el, idx) => {
+            el.classList.toggle('selected', idx === selectedIdx);
+            if (idx === selectedIdx) el.scrollIntoView({ block: 'nearest' });
+          });
+        };
+
+        input.addEventListener('input', (e) => {
+          selectedIdx = 0;
+          renderCommands(e.target.value);
+        });
+
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (flattenedFiltered.length > 0) {
+              selectedIdx = (selectedIdx + 1) % flattenedFiltered.length;
+              updateSelectedCommand();
+            }
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (flattenedFiltered.length > 0) {
+              selectedIdx = (selectedIdx - 1 + flattenedFiltered.length) % flattenedFiltered.length;
+              updateSelectedCommand();
+            }
+          } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (flattenedFiltered[selectedIdx]) {
+              const item = flattenedFiltered[selectedIdx];
+              App.toggleCommandMenu(false);
+              item.action();
+            }
+          }
+        });
+
+        closeBtn.addEventListener('click', () => App.toggleCommandMenu(false));
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) App.toggleCommandMenu(false);
+        });
+
+        this._renderCommands = renderCommands;
+      },
+
+      toggleCommandMenu(open) {
+        const modal = $('#commandModal');
+        const input = $('#commandInput');
+        if (open) {
+          modal.classList.add('open');
+          input.value = '';
+          this._renderCommands('');
+          setTimeout(() => input.focus(), 50);
+        } else {
+          modal.classList.remove('open');
+        }
       },
 
       updateCanvasAspect() {
@@ -2540,9 +3042,13 @@
           }
 
           showToast('Recording active in studio.');
+          $('#dynamicIsland').classList.add('recording');
+          $('#islandText').textContent = 'Recording Screen & Cam';
         } catch (err) {
           console.error(err);
           showToast('Recording cancelled.');
+          $('#dynamicIsland').classList.remove('recording');
+          $('#islandText').textContent = 'StudioFlow 2026 • Ready';
         }
       },
 
@@ -2585,6 +3091,7 @@
             const pct = Math.round(progress * 100);
             $('#exportBarFill').style.width = `${pct}%`;
             $('#exportProgressPct').textContent = `${pct}%`;
+            $('#islandText').textContent = `Muxing MP4 (${pct}%)`;
           });
 
           const url = URL.createObjectURL(blob);
@@ -2602,6 +3109,7 @@
         } finally {
           $('#btnStartExport').disabled = false;
           $('#exportProgressBox').style.display = 'none';
+          $('#islandText').textContent = 'StudioFlow 2026 • Ready';
         }
       }
     };
