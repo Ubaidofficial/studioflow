@@ -3,6 +3,8 @@
 > **A professional, 100% client-side screen recorder and video studio in a single HTML file.**  
 > Combining ideas from [Dolly](https://dolly-zee.vercel.app/) and [Bolo](https://github.com/NakliTechie/Bolo) with a modern **2026 Nordic Polarnatt** design system — crafted with zero "AI slop", zero build steps, and hardware-accelerated **WebCodecs MP4 export**.
 
+🌐 **Live Web Application**: [https://ubaidofficial.github.io/studioflow/](https://ubaidofficial.github.io/studioflow/)
+
 ---
 
 ## ⚡ Highlights
