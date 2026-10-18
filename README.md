@@ -1,7 +1,8 @@
-# StudioFlow 2026 — In-Browser Screen Studio & Video Editor
+# Dolly StudioFlow 2026 — In-Browser Screen Studio & Video Editor
 
-> **A professional, 100% client-side screen recorder and video studio in a single HTML file.**  
-> Combining ideas from [Dolly](https://dolly-zee.vercel.app/) and [Bolo](https://github.com/NakliTechie/Bolo) with a modern **2026 Nordic Polarnatt** design system — crafted with zero "AI slop", zero build steps, and hardware-accelerated **WebCodecs MP4 export**.
+> **A professional, 100% client-side screen recorder and video studio in a single standalone HTML file.**  
+> Faithfully embodying and enhancing the design and workflow of [Dolly](https://dolly-zee.vercel.app/) and [Bolo](https://github.com/NakliTechie/Bolo), fused with 2026 design system patterns from [shadcn/ui](https://github.com/shadcn-ui/ui), [cult-ui](https://github.com/nolly-studio/cult-ui), [animate-ui](https://github.com/imskyleen/animate-ui), [sona-ui](https://github.com/Dinil-Thilakarathne/sona-ui), [velora-ui](https://github.com/ColorlibHQ/velora-ui), and [EasyUI](https://github.com/Surajmaurya1/easyui).  
+> **100% Client-Side • Zero Build Steps • Zero Telemetry • Hardware-Accelerated WebCodecs MP4 Export.**
 
 🌐 **Live Web Application**: [https://ubaidofficial.github.io/studioflow/](https://ubaidofficial.github.io/studioflow/)
 
@@ -9,54 +10,61 @@
 
 ## ⚡ Highlights
 
-- **Zero Install, Zero Build Steps**: Open `index.html` directly in any modern browser (Chrome, Brave, Edge, Arc). No `npm install`, no Docker, no backend server needed.
-- **Hardware-Accelerated WebCodecs Export**: Exports native `.mp4` videos at **8×–12× real-time** speed (a 1-minute 1080p 60fps video renders in ~5 seconds).
-- **Two Flexible Editing Modes**:
-  - **Quick Mode**: Streamlined interface for rapid screen and webcam recordings.
-  - **Studio Mode**: Full multi-track timeline, keyframed zooms, device mockups, and privacy controls.
-- **Dynamic Voice-Reactive Presenter Bubble**: Presenter webcam bubble automatically pulses and expands with speaking audio volume to hold viewer attention.
-- **2026 Polarnatt Design System**: Scandinavian obsidian dark mode, crisp alabaster light mode, 1px hairline borders, and monospace tabular readouts.
-- **100% Private**: Your screen recordings and webcam streams never leave your device. Zero telemetry, zero external network requests.
+- **Zero Install, Zero Build Steps**: Open `index.html` directly in any modern web browser (Chrome, Brave, Edge, Arc, Safari). No `npm install`, no Node.js, no Docker, and no server required.
+- **Dolly Design & Workflow**:
+  - **Hero Welcome Banner**: Quick "Start recording", "Try the editor", and device status chips (`🎙️ Mic`, `📷 Camera`, `🔊 System audio`, `⚙️`).
+  - **3-Step Recording Modal**: Visual selector for *Entire screen*, *A window*, or *A browser tab* + physical camera and microphone device dropdown pickers with live hardware detection.
+  - **Top Island Header**: Dolly concentric ring mark, project title renamer, live `• Saved` indicator, Undo/Redo buttons, light/dark theme switch, and solid Royal Blue `#2563EB` Export button.
+- **Interactive Multi-Track Timeline (Dolly Screenshot 3)**:
+  - **Filmstrip Thumbnails**: Visual frame strip depicting clip contents across the timeline.
+  - **Audio Waveform Overlay**: Real-time organic speech waveform bars rendered directly over the video clip.
+  - **In-Track Zoom Badge Pills**: Numbered zoom factor pills (e.g. `1  1.55x`) floating directly inside the video lane with drag handles to reposition keyframes.
+  - **Subtitles & Captions Lane**: Draggable subtitle cue blocks with instant timing adjustment and canvas overlay pills.
+- **Presenter Camera Bubble**:
+  - **4 Dolly Shapes**: Circle (`○`), Squircle (`▢`), Capsule (`⬯`), and Rounded Rectangle (`▭`).
+  - **4 Smart Corner Snaps**: Top-Left (`⌜`), Top-Right (`⌝`), Bottom-Left (`⌞`), Bottom-Right (`⌟`).
+  - **Free Canvas Dragging**: Click and drag the presenter bubble anywhere on the preview canvas with real-time cursor feedback and corner snapping.
+  - **5 Border Styles**: None, White, Black, Royal Blue, and Purple.
+  - **Sliders**: Smooth controls for Size (15%–120%), Zoom (1.0×–2.5×), and Drop Shadow (0%–100%).
+- **Local AI Browser Captions**:
+  - Transcribes speech locally inside browser memory — nothing leaves your machine.
+  - Multi-language support: English, Urdu (`اردو`), Spanish, French, German, Hindi, Chinese, Japanese, Arabic.
+  - One-click *Generate again*, inline subtitle editing, and keyboard shortcut (`T`) to insert subtitles at playhead.
+- **Studio Audio Suite**:
+  - Master volume slider (0%–200%).
+  - One-click *Enhance voice* vocal presence filter.
+  - *Trim silence* tool to remove dead air automatically.
+- **Complete Undo / Redo History**: Full state snapshots supporting `⌘Z` (Undo) and `⌘⇧Z` (Redo) across all edits, moves, cuts, and inspector settings.
+- **Hardware-Accelerated WebCodecs Export**: Exports native `.mp4` video files at **8×–12× real-time** speed via `VideoEncoder` and `mp4-muxer`.
 
 ---
 
-## 🎨 Features & Architecture
+## 🎨 Design System & Visual Architecture
 
-### 1. Dual Mode Workflow (Inspired by Bolo)
-- **Quick Mode**: Collapses all panels and gives full focus to recording and fast exporting. Ideal for quick Loom-style bug reports and asynchronous updates.
-- **Studio Mode**: Opens the full inspector and multi-track timeline for professional keynote, product demo, or tutorial videos.
+### 1. Dolly Welcome Hero & 3-Step Setup
+The studio greets you with Dolly's welcome card:
+- **Hero Actions**: Start recording with 1 click or explore demo content with "Try the editor".
+- **Step 1 of 3 Modal**: Visual cards for screen type (*Entire screen*, *A window*, *A browser tab*), hardware camera/microphone selection via `navigator.mediaDevices.enumerateDevices()`, and system audio capture switch.
 
-### 2. Studio Canvas & Device Frames
-- **macOS Window Frame**: Authentic traffic-light controls (close, minimize, zoom) and customizable window titles.
-- **Browser Frame**: Clean modern browser chrome with navigation buttons and address bar.
-- **Clean / Borderless**: Modern rounded glass or edge-to-edge presentation.
-- **Customizable Padding & Shadows**: Real-time sliders for corner radius, padding, and studio drop shadows.
-- **Live Video Blur Wallpaper**: Glassmorphic backdrop that dynamically blurs and diffuses the video behind the frame.
+### 2. Multi-Track NLE Timeline
+A desktop-grade timeline inspired by Dolly and modern video editors:
+- **Ruler Track**: Sub-second and second interval markings.
+- **Clip Track**: Seamless clip block with filmstrip frame thumbnails, audio waveform overlay, and draggable floating zoom factor badges.
+- **Captions Track**: Clear subtitle blocks that sync with canvas overlay rendering.
+- **Playhead**: Scrubbable playhead needle with smooth frame-by-frame seeking.
 
-### 3. Voice-Reactive Webcam Presenter Bubble
-- **Shapes**: Choose between Circle, Squircle, or Rounded Rect.
-- **Smart Corner Snapping**: One-click positioning in Top-Left, Top-Right, Bottom-Left, or Bottom-Right.
-- **Audio Pulse Modulation**: Analyzes microphone input via Web Audio API to gently pulse the bubble and glow when speaking.
-- **Mirror Mode**: Instant webcam mirroring toggle.
+### 3. Studio Stage & Device Frames
+- **macOS Window Frame**: Authentic traffic-light controls (close, minimize, zoom) with custom titles.
+- **Browser Frame**: Clean modern browser chrome with navigation buttons and URL bar.
+- **Clean / Borderless**: Modern rounded glass presentation.
+- **Customizable Aspect Ratios**: Floating island for Original, 16:9, 9:16 (Shorts/Reels/TikTok), 1:1 (Square), and 4:5.
+- **Background Gradients**: Dolly Sunset, Coral, Sky, Lavender, Pearl, Midnight, Ocean, and Cyber presets, plus Live Video Blur Wallpaper.
 
-### 4. Smart Pan & Smooth Zoom Keyframing
-- **Cubic Bezier Easing**: Smooth, cinematic camera zooms toward points of interest.
-- **Interactive Focal Steering**: Click and drag on the canvas to orient the zoom focal point ($X, Y$).
-- **One-Click Auto-Detect**: Instantly generates zoom cuts across key segments of the video.
-- **Timeline Zoom Blocks**: Draggable and resizable zoom blocks on a dedicated timeline track.
-
-### 5. Privacy & Annotations
-- **Drop-in Redaction Blurs**: Blur sensitive passwords, API keys, tokens, or personal identifiers.
-- **Shortcut Pill Badges**: Overlay realistic keyboard shortcut badges (e.g., `⌘ + K`, `Ctrl + S`).
-- **Voice Clarity Filter**: Built-in audio equalization to enhance vocal presence.
-
-### 6. EasyUI Animated Motion Suite ([Surajmaurya1/easyui](https://github.com/Surajmaurya1/easyui))
-- **Dynamic Island Status Pill (`DynamicIsland.tsx`)**: Header capsule morphing dynamically between idle ready state, recording timecounter with audio wave pulses, and WebCodecs export percentage.
-- **Global ⌘K Command Palette (`CommandMenu.tsx`)**: Full keyboard-driven command menu for lightning-fast action execution, frame switching, and shortcut reference.
-- **Cursor Spotlight Following Cards (`SpotlightCard.tsx`)**: Precision radial lighting and hairline border illumination tracking mouse movement across inspector cards and modal dialogs.
+### 4. EasyUI Animated Motion Suite ([Surajmaurya1/easyui](https://github.com/Surajmaurya1/easyui))
+- **Dynamic Island Status Pill (`DynamicIsland.tsx`)**: Header capsule morphing between idle ready state, recording timecounter, and export progress.
+- **Global ⌘K Command Palette (`CommandMenu.tsx`)**: Full keyboard-driven command menu for lightning-fast action execution.
+- **Cursor Spotlight Following Cards (`SpotlightCard.tsx`)**: Radial hairline border illumination tracking mouse movement.
 - **Magnetic Proximity Action Buttons (`MagneticButton.tsx`)**: Physical spring attraction pulling key buttons toward the cursor on hover.
-- **Engineering DotField Stage Backdrop (`DotField.tsx`)**: Subtle dot grid pattern behind the workspace canvas with smooth radial vignette falloff.
-- **Elastic Stretch Switches (`StretchSwitch.tsx`)**: Organic spring physics with physical elongation on click.
 
 ---
 
@@ -73,7 +81,7 @@ StudioFlow utilizes the **W3C WebCodecs API** (`VideoEncoder`) paired with **`mp
 
 - **Speed**: 8× to 12× faster than real-time.
 - **Quality**: Customizable resolutions (720p, 1080p, 4K) at 30 FPS or 60 FPS.
-- **Container**: Native MP4 container compatible with YouTube, X, Slack, and QuickTime.
+- **Container**: Native MP4 container compatible with YouTube, X, Slack, Discord, and QuickTime.
 
 ---
 
@@ -102,11 +110,14 @@ Then visit **`http://localhost:4173`** in your browser.
 
 | Key | Action |
 | :--- | :--- |
-| `⌘K` / `Ctrl + K` | Open EasyUI Command Menu Palette |
+| `⌘Z` / `Ctrl + Z` | Undo last action |
+| `⌘⇧Z` / `Ctrl + Shift + Z` | Redo last action |
+| `⌘K` / `Ctrl + K` | Open Command Menu Palette |
 | `Space` | Play / Pause video preview |
-| `S` | Split selected clip at current playhead position |
-| `Z` | Add a new Zoom keyframe block at playhead |
-| `Delete` / `Backspace` | Remove selected clip, zoom, or redaction block |
+| `S` | Split clip at playhead position |
+| `Z` | Add Zoom keyframe at playhead |
+| `T` | Add Subtitle / Caption at playhead |
+| `Delete` / `Backspace` | Remove selected clip, zoom, caption, or blur |
 | `←` / `→` | Step playhead backward / forward by 0.2s |
 | `Shift + ←` / `Shift + →` | Step playhead backward / forward by 2.0s |
 | `Esc` | Dismiss modals or Command Menu |
@@ -117,7 +128,7 @@ Then visit **`http://localhost:4173`** in your browser.
 
 ```text
 .
-├── index.html               # 100% self-contained application (UI, Canvas engine, audio pipeline)
+├── index.html               # 100% self-contained application (UI, Canvas engine, WebCodecs pipeline)
 ├── vendor/
 │   ├── mp4-muxer.min.js     # WebCodecs MP4 multiplexer library
 │   └── webm-muxer.min.js    # WebCodecs WebM multiplexer fallback
@@ -128,9 +139,9 @@ Then visit **`http://localhost:4173`** in your browser.
 
 ## 🛡️ Privacy & Security
 
-- **No Telemetry**: There are no tracking scripts, analytics, or external CDNs.
+- **No Telemetry**: Zero tracking scripts, cookies, or external analytics.
 - **100% Offline Capable**: All libraries are bundled locally in the `vendor/` directory.
-- **Zero Cloud Uploads**: All audio, video, screen captures, and exports are processed exclusively in your computer's browser memory.
+- **Zero Cloud Uploads**: All audio, video, screen captures, speech transcriptions, and exports are processed exclusively in your computer's browser memory.
 
 ---
 

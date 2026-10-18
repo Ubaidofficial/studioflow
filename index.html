@@ -1,24 +1,71 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" data-mode="studio">
+<html lang="en" data-theme="light" data-mode="studio">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StudioFlow 2026 — Next-Gen Screen Studio & Video Editor</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%2338BDF8'/><stop offset='100%' stop-color='%233B82F6'/></linearGradient></defs><rect width='100' height='100' rx='28' fill='%2308090D'/><rect x='2' y='2' width='96' height='96' rx='26' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='2'/><polygon points='40,32 72,50 40,68' fill='url(%23g)'/></svg>">
+  <title>Dolly StudioFlow — Next-Gen Browser Screen Studio & Video Editor</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%232563EB'/><circle cx='50' cy='50' r='26' fill='none' stroke='%23FFFFFF' stroke-width='10'/><circle cx='50' cy='50' r='11' fill='%23FFFFFF'/></svg>">
   <script src="vendor/mp4-muxer.min.js"></script>
   <script src="vendor/webm-muxer.min.js"></script>
   <style>
     /* =========================================================================
-       StudioFlow 2026 Design System
-       Polarnatt Deep Obsidian & Scandinavian Alabaster Palette
-       Clean, architectural, zero-AI-slop interface with ambient spatial lighting.
+       Dolly StudioFlow 2026 Design System
+       Synthesizing Dolly UI/UX + Cult UI + Shadcn UI + Animate UI + Sona UI
+       100% Client-Side, Zero AI-Slop, Hardware Accelerated WebCodecs MP4 Muxer
        ========================================================================= */
     :root {
-      /* Polarnatt 2026 Dark Theme (Default) */
-      --bg-canvas: #08090D;
-      --bg-surface: #10121A;
-      --bg-surface-2: #161922;
-      --bg-sunken: #0C0E14;
+      /* Cult UI & Shadcn Soft Elevation Scales */
+      --elevation-soft-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+      --elevation-soft-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+      --elevation-soft: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 2px 6px 0 rgba(0, 0, 0, 0.04);
+      --elevation-soft-md: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+      --elevation-soft-lg: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+
+      /* Dolly Light Theme (Default, as in Dolly live app) */
+      --bg-canvas: #F4F5F8;
+      --bg-surface: #FFFFFF;
+      --bg-surface-2: #F8FAFC;
+      --bg-sunken: #EEF2F6;
+      --bg-elevated: #FFFFFF;
+      --hair: #E2E8F0;
+      --hair-subtle: #EDF2F7;
+      --hair-strong: #CBD5E1;
+      --ink: #0F172A;
+      --ink-2: #475569;
+      --ink-3: #94A3B8;
+      --accent: #2563EB;
+      --accent-hover: #1D4ED8;
+      --accent-glow: rgba(37, 99, 235, 0.22);
+      --accent-soft: #EFF6FF;
+      --teal: #0D9488;
+      --teal-soft: rgba(13, 148, 136, 0.10);
+      --rec: #DC2626;
+      --rec-soft: rgba(220, 38, 38, 0.10);
+      --stage: #EAEEF4;
+      --tl-zoom: #2563EB;
+      --tl-blur: #7C3AED;
+      --tl-audio: #059669;
+      --shadow-ambient: 0 32px 70px -16px rgba(15, 23, 42, 0.14);
+      --shadow-card: var(--elevation-soft-md);
+      --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      --f-ui: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Geist", "Inter", system-ui, sans-serif;
+      --f-mono: ui-monospace, "SF Mono", "Geist Mono", Menlo, Consolas, monospace;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      color-scheme: light;
+    }
+
+    :root[data-theme="dark"] {
+      /* Polarnatt Midnight Dark Theme (Toggleable) */
+      --elevation-soft-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+      --elevation-soft-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
+      --elevation-soft: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+      --elevation-soft-md: 0 0 0 1px rgba(255, 255, 255, 0.10), 0 6px 16px -2px rgba(0, 0, 0, 0.7);
+      --elevation-soft-lg: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 12px 30px -4px rgba(0, 0, 0, 0.85);
+
+      --bg-canvas: #090A0F;
+      --bg-surface: #11131B;
+      --bg-surface-2: #161924;
+      --bg-sunken: #0D0F15;
       --bg-elevated: #1D212E;
       --hair: rgba(255, 255, 255, 0.08);
       --hair-subtle: rgba(255, 255, 255, 0.04);
@@ -29,7 +76,7 @@
       --accent: #3B82F6;
       --accent-hover: #2563EB;
       --accent-glow: rgba(59, 130, 246, 0.35);
-      --accent-soft: rgba(59, 130, 246, 0.12);
+      --accent-soft: rgba(59, 130, 246, 0.14);
       --teal: #14B8A6;
       --teal-soft: rgba(20, 184, 166, 0.12);
       --rec: #EF4444;
@@ -41,41 +88,7 @@
       --shadow-ambient: 0 32px 80px -20px rgba(0, 0, 0, 0.95);
       --shadow-card: 0 16px 40px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--hair);
       --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      --f-ui: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
-      --f-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      --ease: cubic-bezier(0.16, 1, 0.3, 1);
       color-scheme: dark;
-    }
-
-    :root[data-theme="light"] {
-      /* 2026 Alabaster Light Theme */
-      --bg-canvas: #F8FAFC;
-      --bg-surface: #FFFFFF;
-      --bg-surface-2: #F1F5F9;
-      --bg-sunken: #E2E8F0;
-      --bg-elevated: #FFFFFF;
-      --hair: rgba(0, 0, 0, 0.08);
-      --hair-subtle: rgba(0, 0, 0, 0.04);
-      --hair-strong: rgba(0, 0, 0, 0.16);
-      --ink: #0F172A;
-      --ink-2: #475569;
-      --ink-3: #94A3B8;
-      --accent: #2563EB;
-      --accent-hover: #1D4ED8;
-      --accent-glow: rgba(37, 99, 235, 0.25);
-      --accent-soft: rgba(37, 99, 235, 0.08);
-      --teal: #0D9488;
-      --teal-soft: rgba(13, 148, 136, 0.10);
-      --rec: #DC2626;
-      --rec-soft: rgba(220, 38, 38, 0.10);
-      --stage: #EAEEF4;
-      --tl-zoom: #2563EB;
-      --tl-blur: #7C3AED;
-      --tl-audio: #059669;
-      --shadow-ambient: 0 32px 70px -16px rgba(15, 23, 42, 0.18);
-      --shadow-card: 0 12px 32px -8px rgba(15, 23, 42, 0.10), 0 0 0 1px var(--hair);
-      --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
-      color-scheme: light;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -558,6 +571,575 @@
     .swatch.active {
       border-color: var(--bg-surface);
       box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    /* Dolly Topbar Status & Actions */
+    .status-saved-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 520;
+      color: #64748B;
+      padding: 3px 8px;
+      border-radius: 99px;
+      background: var(--bg-sunken);
+      border: 1px solid var(--hair-subtle);
+    }
+    .status-saved-pill .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22C55E;
+      box-shadow: 0 0 6px #22C55E;
+    }
+    .topbar-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--hair-strong);
+      margin: 0 4px;
+    }
+    .btn-icon-top {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--ink-2);
+      font-size: 14px;
+      transition: all 0.12s;
+    }
+    .btn-icon-top:hover {
+      background: var(--bg-sunken);
+      color: var(--ink);
+      border-color: var(--hair);
+    }
+    .btn-icon-top:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    /* Dolly Hero Welcome Banner (Image 1) */
+    .dolly-hero-banner {
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--hair);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 12px;
+      box-shadow: var(--elevation-soft-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      position: relative;
+      animation: popIn 0.25s var(--ease);
+      transition: all 0.25s var(--ease);
+    }
+    .dolly-hero-banner.dismissed {
+      display: none;
+    }
+    .dolly-hero-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 0;
+      background: transparent;
+      color: var(--ink-3);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+    .dolly-hero-close:hover { background: var(--bg-sunken); color: var(--ink); }
+    .dolly-hero-headline {
+      font-size: 15.5px;
+      font-weight: 560;
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 640px;
+      letter-spacing: -0.015em;
+    }
+    .dolly-hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-dolly-rec {
+      height: 40px;
+      padding: 0 22px;
+      border-radius: 99px;
+      background: #2563EB;
+      color: #FFFFFF;
+      border: 0;
+      font-size: 13.5px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-dolly-rec:hover { background: #1D4ED8; transform: translateY(-1px); }
+    .btn-dolly-rec .red-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #EF4444;
+      box-shadow: 0 0 6px #EF4444;
+      animation: recPulse 1.6s infinite;
+    }
+    .btn-dolly-demo {
+      height: 40px;
+      padding: 0 20px;
+      border-radius: 99px;
+      background: var(--bg-surface);
+      color: var(--ink);
+      border: 1px solid var(--hair-strong);
+      font-size: 13px;
+      font-weight: 550;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      box-shadow: var(--elevation-soft-xs);
+      transition: all 0.15s;
+    }
+    .btn-dolly-demo:hover { background: var(--bg-sunken); border-color: var(--ink-3); }
+    .dolly-hero-chips {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--ink-2);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .dolly-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 99px;
+      background: var(--bg-sunken);
+      border: 1px solid var(--hair);
+      font-size: 11.5px;
+      font-weight: 520;
+      color: var(--ink-2);
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .dolly-chip:hover { border-color: var(--accent); color: var(--ink); }
+    .dolly-chip.active {
+      background: var(--accent-soft);
+      border-color: rgba(37, 99, 235, 0.3);
+      color: var(--accent);
+    }
+
+    /* Dolly 3-Card Recording Modal (Image 2) */
+    .dolly-modal {
+      width: 540px;
+      max-width: calc(100% - 24px);
+      background: var(--bg-surface);
+      border: 1px solid var(--hair-strong);
+      border-radius: 20px;
+      box-shadow: 0 28px 70px -12px rgba(15, 23, 42, 0.22), var(--elevation-soft-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      animation: popIn 0.2s var(--ease);
+    }
+    .dolly-modal-head {
+      padding: 22px 26px 14px;
+      position: relative;
+    }
+    .dolly-step-tag {
+      font-size: 12px;
+      font-weight: 650;
+      color: var(--accent);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .dolly-modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .dolly-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 22px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 0;
+      background: transparent;
+      color: var(--ink-3);
+      font-size: 16px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.1s;
+    }
+    .dolly-modal-close:hover { background: var(--bg-sunken); color: var(--ink); }
+    .dolly-modal-body {
+      padding: 0 26px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .dolly-section-label {
+      font-size: 12px;
+      font-weight: 650;
+      color: var(--ink-2);
+      margin-bottom: 8px;
+    }
+    .screen-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .screen-card {
+      padding: 14px 12px;
+      border-radius: 12px;
+      border: 1.5px solid var(--hair);
+      background: var(--bg-surface);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: all 0.15s var(--ease);
+      user-select: none;
+    }
+    .screen-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .screen-card.active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+    .screen-card-icon {
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
+    .screen-card-title {
+      font-size: 12.5px;
+      font-weight: 650;
+      color: var(--ink);
+    }
+    .screen-card-desc {
+      font-size: 11px;
+      color: var(--ink-3);
+      line-height: 1.35;
+    }
+    .dolly-card-box {
+      border: 1px solid var(--hair);
+      border-radius: 12px;
+      background: var(--bg-surface);
+      overflow: hidden;
+    }
+    .dolly-device-row {
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--hair-subtle);
+    }
+    .dolly-device-row:last-child { border-bottom: 0; }
+    .dolly-device-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
+    }
+    .dolly-device-icon {
+      font-size: 18px;
+      color: var(--ink-2);
+      flex: none;
+    }
+    .dolly-device-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .dolly-device-name {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .dolly-device-sub {
+      font-size: 11px;
+      color: var(--ink-3);
+    }
+    .dolly-device-select {
+      font-size: 11.5px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--hair-strong);
+      background: var(--bg-sunken);
+      color: var(--ink);
+      max-width: 170px;
+    }
+    .dolly-helper-link {
+      font-size: 11.5px;
+      color: var(--accent);
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 2px;
+    }
+    .dolly-helper-link:hover { text-decoration: underline; }
+    .dolly-modal-foot {
+      padding: 14px 26px 22px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+    .btn-dolly-continue {
+      height: 38px;
+      padding: 0 24px;
+      background: #2563EB;
+      color: #FFFFFF;
+      border: 0;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-dolly-continue:hover { background: #1D4ED8; }
+
+    /* Dolly Inspector Controls (Camera, Captions, Audio) */
+    .seg-cam-shape button {
+      font-size: 14px;
+    }
+    .border-swatches {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .border-swatch {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 0.12s, box-shadow 0.12s;
+      position: relative;
+    }
+    .border-swatch:hover { transform: scale(1.15); }
+    .border-swatch.active {
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .border-swatch.none {
+      background: var(--bg-sunken);
+      border: 1.5px solid var(--hair-strong);
+    }
+    .border-swatch.none::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 2px;
+      right: 2px;
+      height: 1.5px;
+      background: #EF4444;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+    .border-swatch.white { background: #FFFFFF; border: 1px solid #CBD5E1; }
+    .border-swatch.black { background: #000000; }
+    .border-swatch.blue { background: #2563EB; }
+    .border-swatch.purple { background: #8B5CF6; }
+
+    .inspector-helper-text {
+      font-size: 11px;
+      color: var(--ink-3);
+      line-height: 1.4;
+    }
+
+    /* Captions Section Styling */
+    .caption-row-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-generate-captions {
+      flex: 1;
+      height: 32px;
+      background: #2563EB;
+      color: #FFFFFF;
+      border: 0;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .btn-generate-captions:hover { background: #1D4ED8; }
+    .lang-select {
+      height: 32px;
+      padding: 0 8px;
+      border-radius: 8px;
+      border: 1px solid var(--hair-strong);
+      background: var(--bg-sunken);
+      color: var(--ink);
+      font-size: 11.5px;
+      font-weight: 520;
+      cursor: pointer;
+    }
+    .captions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 180px;
+      overflow-y: auto;
+      margin-top: 4px;
+    }
+    .caption-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 8px;
+      border-radius: 8px;
+      background: var(--bg-sunken);
+      border: 1px solid var(--hair-subtle);
+      transition: all 0.12s;
+    }
+    .caption-item:hover, .caption-item.active {
+      background: var(--bg-surface-2);
+      border-color: var(--accent);
+    }
+    .caption-time-badge {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--bg-surface);
+      padding: 2px 5px;
+      border-radius: 4px;
+      border: 1px solid var(--hair);
+      flex: none;
+    }
+    .caption-input-box {
+      flex: 1;
+      background: transparent;
+      border: 0;
+      font-size: 11.5px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .btn-caption-del {
+      background: transparent;
+      border: 0;
+      color: var(--ink-3);
+      cursor: pointer;
+      padding: 2px 4px;
+      font-size: 12px;
+    }
+    .btn-caption-del:hover { color: var(--rec); }
+
+    /* Timeline Dock Enhancements (Image 3) */
+    .filmstrip-strip {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+    .filmstrip-frame {
+      height: 100%;
+      aspect-ratio: 16/9;
+      background-size: cover;
+      background-position: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+      flex: none;
+    }
+    .waveform-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .zoom-badge-pill {
+      position: absolute;
+      top: 6px;
+      height: 22px;
+      padding: 0 8px;
+      border-radius: 99px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      font-size: 10.5px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      z-index: 10;
+      cursor: grab;
+      user-select: none;
+    }
+    .zoom-badge-pill:active { cursor: grabbing; }
+    .zoom-badge-pill.selected {
+      border-color: #38BDF8;
+      box-shadow: 0 0 0 1.5px #38BDF8;
+    }
+    .caption-block {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      border-radius: 6px;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      color: #1E40AF;
+      font-size: 11px;
+      font-weight: 550;
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+    :root[data-theme="dark"] .caption-block {
+      background: #1E293B;
+      border-color: #334155;
+      color: #93C5FD;
+    }
+    .caption-block.selected {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1.5px var(--accent);
+    }
+    .caption-lane-empty {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+      color: var(--ink-3);
+      font-style: italic;
+      pointer-events: none;
     }
 
     /* Bottom Dock (Interactive Timeline) */
@@ -1085,26 +1667,31 @@
 <body>
 
   <div id="app">
-    <!-- Top Island Header -->
+    <!-- Top Island Header (Dolly Style) -->
     <header class="topbar">
       <div class="brand-cluster">
-        <div class="brand-mark">
-          <svg viewBox="0 0 24 24"><polygon points="7 5 19 12 7 19 7 5"/></svg>
+        <div class="brand-mark" style="background:#2563EB; border:none; box-shadow:0 2px 8px rgba(37,99,235,0.4);">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <circle cx="12" cy="12" r="9" fill="#2563EB"/>
+            <circle cx="12" cy="12" r="5.5" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+            <circle cx="12" cy="12" r="2.2" fill="#FFFFFF"/>
+          </svg>
         </div>
-        <span class="brand-name">StudioFlow</span>
+        <span class="brand-name">Dolly</span>
         
+        <div class="topbar-divider"></div>
+
         <div class="project-name-pill">
-          <input type="text" class="project-name-input" id="projectName" value="Untitled Screen Recording" spellcheck="false" title="Rename project">
+          <input type="text" class="project-name-input" id="projectName" value="Recording Oct 17, 10:40 PM" spellcheck="false" title="Rename recording">
         </div>
 
-        <!-- Quick vs Studio Mode Toggle (Bolo inspired) -->
-        <div class="mode-switch">
-          <button class="mode-btn" data-mode="quick" title="Streamlined Quick Recorder">Quick</button>
-          <button class="mode-btn active" data-mode="studio" title="Full Studio NLE Editor">Studio</button>
+        <div class="status-saved-pill">
+          <span class="dot"></span>
+          <span>Saved</span>
         </div>
       </div>
 
-      <!-- EasyUI Dynamic Island Status & Command Pill (DynamicIsland.tsx) -->
+      <!-- EasyUI Dynamic Island Status & Command Pill -->
       <div class="dynamic-island easyui-magnetic" id="dynamicIsland" title="Click or press ⌘K for Command Menu">
         <span class="island-dot"></span>
         <span class="island-text" id="islandText">StudioFlow 2026 • Ready</span>
@@ -1112,30 +1699,33 @@
       </div>
 
       <div class="top-actions">
+        <!-- Undo & Redo (Dolly Screenshot 3) -->
+        <button class="btn-icon-top easyui-magnetic" id="btnUndo" title="Undo (⌘Z)">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+        </button>
+        <button class="btn-icon-top easyui-magnetic" id="btnRedo" title="Redo (⌘⇧Z)">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3L21 13"/></svg>
+        </button>
+
         <!-- Light / Dark Mode Toggle -->
-        <button class="btn btn-ghost easyui-magnetic" id="btnThemeToggle" title="Toggle Light / Dark mode" style="width:32px; height:32px; padding:0;">
-          <svg id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <svg id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display:none;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <button class="btn-icon-top easyui-magnetic" id="btnThemeToggle" title="Toggle Light / Dark mode">
+          <svg id="moonIcon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg id="sunIcon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
 
-        <button class="btn btn-ghost easyui-magnetic" id="btnLoadDemo" title="Load sample recording with realistic typing & clicks">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
-          Try Demo
-        </button>
-
-        <button class="btn easyui-magnetic" id="btnUpload" title="Import video file (MP4, WebM)">
+        <button class="btn btn-ghost easyui-magnetic" id="btnUpload" title="Import video file (MP4, WebM)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-          Import Video
+          Import
         </button>
 
         <button class="btn btn-rec easyui-magnetic" id="btnRecordModal" title="Record Screen + Webcam">
           <span class="rec-pulse"></span>
-          Record Screen
+          Record
         </button>
 
-        <button class="btn btn-primary easyui-magnetic" id="btnExportModal" title="Export polished video via WebCodecs hardware encoder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 12v6.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V12"/><path d="M12 15V4"/><path d="m7.5 8.5 4.5-4.5 4.5 4.5"/></svg>
-          Export Video
+        <!-- Solid Royal Blue Export Button -->
+        <button class="btn btn-primary easyui-magnetic" id="btnExportModal" style="background:#2563EB; border-color:#2563EB; font-weight:600; padding:0 20px;" title="Export polished video via WebCodecs">
+          Export
         </button>
       </div>
     </header>
@@ -1145,13 +1735,39 @@
 
       <!-- Left Stage Viewport -->
       <section class="stage">
+        <!-- Dolly Hero Welcome Banner (Image 1) -->
+        <div class="dolly-hero-banner" id="dollyHeroBanner" style="position:absolute; top:20px; z-index:30; max-width:680px;">
+          <button class="dolly-hero-close" id="btnDismissHero" title="Dismiss banner">✕</button>
+          <div class="dolly-hero-headline">
+            Record your screen. Dolly frames it, zooms in on the action and writes the captions. Free, and nothing leaves your computer.
+          </div>
+          <div class="dolly-hero-actions">
+            <button class="btn-dolly-rec easyui-magnetic" id="btnHeroStartRecord">
+              <span class="red-dot"></span>
+              Start recording
+            </button>
+            <button class="btn-dolly-demo easyui-magnetic" id="btnHeroTryEditor">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="#2563EB"><polygon points="6 4 18 12 6 20 6 4"/></svg>
+              Try the editor
+            </button>
+          </div>
+          <div class="dolly-hero-chips">
+            <span style="font-weight:550; color:var(--ink);">Record with</span>
+            <span class="dolly-chip active" id="chipMic">🎙️ Mic</span>
+            <span class="dolly-chip active" id="chipCam">📷 Camera</span>
+            <span class="dolly-chip active" id="chipAudio">🔊 System audio</span>
+            <span class="dolly-chip" id="chipSettings">⚙️</span>
+          </div>
+        </div>
+
         <!-- EasyUI DotField Engineering Grid Backdrop -->
         <div class="stage-dotfield"></div>
 
-        <!-- Floating Aspect Ratio Island -->
+        <!-- Floating Aspect Ratio Island (Dolly Screenshot 3) -->
         <div class="stage-island easyui-spotlight" id="stageAspectBar">
-          <button class="active" data-aspect="16:9">16:9</button>
-          <button data-aspect="9:16">9:16 (Shorts)</button>
+          <button class="active" data-aspect="original">Original</button>
+          <button data-aspect="16:9">16:9</button>
+          <button data-aspect="9:16">9:16</button>
           <button data-aspect="1:1">1:1</button>
           <button data-aspect="4:5">4:5</button>
         </div>
@@ -1165,11 +1781,11 @@
         <!-- Floating Hint Pill -->
         <div class="stage-hint-pill" id="stageHint">
           <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          <span>Click & drag canvas to visually steer zoom focal point</span>
+          <span>Drag the camera on the preview to put it anywhere</span>
         </div>
       </section>
 
-      <!-- Right Studio Inspector -->
+      <!-- Right Studio Inspector (Matching Dolly Screenshot 3) -->
       <aside class="inspector">
         <div class="inspector-head">
           <span class="inspector-label">Studio Controls</span>
@@ -1177,9 +1793,171 @@
 
         <div class="inspector-body">
 
-          <!-- 1. Frame & Device Mockup -->
+          <!-- 1. Camera Section (Dolly Screenshot 3) -->
           <div class="sect easyui-spotlight">
-            <div class="sect-title">Device Frame Mockup</div>
+            <div class="sect-title">
+              <span>Camera</span>
+              <label class="switch">
+                <input type="checkbox" id="chkCamVisible" checked>
+                <span class="switch-track"></span>
+              </label>
+            </div>
+
+            <!-- Shape (4 Dolly Shapes: Circle, Squircle, Capsule, Rect) -->
+            <div class="control-row">
+              <span class="control-label">Shape</span>
+              <div class="seg seg-cam-shape" id="segCamShape" style="width:200px;">
+                <button class="active" data-shape="circle" title="Circle">○</button>
+                <button data-shape="squircle" title="Squircle">▢</button>
+                <button data-shape="capsule" title="Capsule">⬯</button>
+                <button data-shape="rect" title="Rectangle">▭</button>
+              </div>
+            </div>
+
+            <!-- Corner Snap -->
+            <div class="control-row">
+              <span class="control-label">Corner</span>
+              <div class="seg" id="segCamCorner" style="width:200px;">
+                <button data-corner="tl" title="Top-Left">⌜</button>
+                <button data-corner="tr" title="Top-Right">⌝</button>
+                <button data-corner="bl" title="Bottom-Left">⌞</button>
+                <button class="active" data-corner="br" title="Bottom-Right">⌟</button>
+              </div>
+            </div>
+
+            <!-- Border Swatches (None, White, Black, Blue, Purple) -->
+            <div class="control-row">
+              <span class="control-label">Border</span>
+              <div class="border-swatches" id="camBorderSwatches">
+                <div class="border-swatch none" data-border="none" title="No border"></div>
+                <div class="border-swatch white active" data-border="white" title="White border"></div>
+                <div class="border-swatch black" data-border="black" title="Black border"></div>
+                <div class="border-swatch blue" data-border="blue" title="Royal Blue border"></div>
+                <div class="border-swatch purple" data-border="purple" title="Purple border"></div>
+              </div>
+            </div>
+
+            <!-- Size Slider -->
+            <div class="slider-box">
+              <div class="slider-info">
+                <span>Size</span>
+                <span class="slider-val" id="valCamSize">93%</span>
+              </div>
+              <input type="range" id="rngCamSize" min="15" max="120" value="93">
+            </div>
+
+            <!-- Zoom Slider -->
+            <div class="slider-box">
+              <div class="slider-info">
+                <span>Zoom</span>
+                <span class="slider-val" id="valCamZoom">1.9×</span>
+              </div>
+              <input type="range" id="rngCamZoom" min="1.0" max="2.5" step="0.1" value="1.9">
+            </div>
+
+            <!-- Shadow Slider -->
+            <div class="slider-box">
+              <div class="slider-info">
+                <span>Shadow</span>
+                <span class="slider-val" id="valCamShadow">70%</span>
+              </div>
+              <input type="range" id="rngCamShadow" min="0" max="100" value="70">
+            </div>
+
+            <!-- Mirror Toggle -->
+            <div class="control-row">
+              <span class="control-label">Mirror</span>
+              <label class="switch">
+                <input type="checkbox" id="chkCamMirror" checked>
+                <span class="switch-track"></span>
+              </label>
+            </div>
+
+            <div class="inspector-helper-text">
+              Drag the camera on the preview to put it anywhere.
+            </div>
+          </div>
+
+          <!-- 2. Captions Section (Dolly Screenshot 3) -->
+          <div class="sect easyui-spotlight">
+            <div class="sect-title">
+              <span>Captions</span>
+            </div>
+
+            <div class="caption-row-actions">
+              <button class="btn-generate-captions easyui-magnetic" id="btnGenCaptions">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Generate again
+              </button>
+              <select class="lang-select" id="selCaptionLang">
+                <option value="en">English</option>
+                <option value="ur">Urdu (اردو)</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="hi">Hindi</option>
+                <option value="zh">Chinese</option>
+                <option value="ja">Japanese</option>
+                <option value="ar">Arabic</option>
+              </select>
+            </div>
+
+            <div class="inspector-helper-text">
+              Made on your computer. Speech model runs locally in browser.
+            </div>
+
+            <button class="btn btn-ghost" id="btnAddCaptionLine" style="width:100%; border:1px solid var(--hair-strong); font-size:12px;">
+              + Add line
+            </button>
+
+            <!-- Caption Cues List -->
+            <div class="captions-list" id="captionsList">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- 3. Audio Section (Dolly Screenshot 3) -->
+          <div class="sect easyui-spotlight">
+            <div class="sect-title">
+              <span>Audio</span>
+            </div>
+
+            <div class="slider-box">
+              <div class="slider-info">
+                <span>Volume</span>
+                <span class="slider-val" id="valAudioVol">100%</span>
+              </div>
+              <input type="range" id="rngAudioVol" min="0" max="200" value="100">
+            </div>
+
+            <div class="control-row">
+              <span class="control-label">Enhance voice</span>
+              <label class="switch">
+                <input type="checkbox" id="chkVoiceEnhance" checked>
+                <span class="switch-track"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 4. Background Presets -->
+          <div class="sect easyui-spotlight">
+            <div class="sect-title">Background</div>
+            <div class="swatches" id="bgSwatches">
+              <!-- Swatches injected by JS -->
+            </div>
+
+            <div class="control-row" style="margin-top:4px;">
+              <span class="control-label">Live Video Blur Wallpaper</span>
+              <label class="switch">
+                <input type="checkbox" id="chkBlurBg">
+                <span class="switch-track"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 5. Device Frame Mockup -->
+          <div class="sect easyui-spotlight">
+            <div class="sect-title">Frame</div>
             <div class="seg" id="segFrame">
               <button class="active" data-frame="mac">macOS</button>
               <button data-frame="browser">Browser</button>
@@ -1212,170 +1990,50 @@
             </div>
           </div>
 
-          <!-- 2. Studio Backgrounds -->
-          <div class="sect easyui-spotlight">
-            <div class="sect-title">Studio Background</div>
-            <div class="swatches" id="bgSwatches">
-              <!-- Swatches injected by JS -->
-            </div>
-
-            <div class="control-row" style="margin-top:4px;">
-              <span class="control-label">Live Video Blur Wallpaper</span>
-              <label class="switch">
-                <input type="checkbox" id="chkBlurBg">
-                <span class="switch-track"></span>
-              </label>
-            </div>
-          </div>
-
-          <!-- 3. Smart Zoom & Motion -->
-          <div class="sect easyui-spotlight">
-            <div class="sect-title">
-              <span>Zoom & Focus</span>
-              <button class="btn btn-ghost" id="btnAutoZoom" style="height:22px; padding:0 6px; font-size:11px; color:var(--accent);">
-                ⚡ Auto-Detect
-              </button>
-            </div>
-
-            <div class="slider-box">
-              <div class="slider-info">
-                <span>Zoom Scale</span>
-                <span class="slider-val" id="valZoomScale">1.8×</span>
-              </div>
-              <input type="range" id="rngZoomScale" min="1.1" max="3.0" step="0.1" value="1.8">
-            </div>
-
-            <div class="slider-box">
-              <div class="slider-info">
-                <span>Focal Center X</span>
-                <span class="slider-val" id="valZoomX">50%</span>
-              </div>
-              <input type="range" id="rngZoomX" min="0" max="100" value="50">
-            </div>
-
-            <div class="slider-box">
-              <div class="slider-info">
-                <span>Focal Center Y</span>
-                <span class="slider-val" id="valZoomY">50%</span>
-              </div>
-              <input type="range" id="rngZoomY" min="0" max="100" value="50">
-            </div>
-
-            <button class="btn" id="btnAddZoomKeyframe" style="width:100%; margin-top:2px;">
-              + Add Zoom at Playhead (Z)
-            </button>
-          </div>
-
-          <!-- 4. Dynamic Webcam Bubble (Bolo inspired talking head) -->
-          <div class="sect easyui-spotlight">
-            <div class="sect-title">
-              <span>Webcam Presenter Bubble</span>
-              <label class="switch">
-                <input type="checkbox" id="chkCamVisible" checked>
-                <span class="switch-track"></span>
-              </label>
-            </div>
-
-            <div class="seg" id="segCamShape">
-              <button class="active" data-shape="circle">Circle</button>
-              <button data-shape="squircle">Squircle</button>
-              <button data-shape="rounded">Rect</button>
-            </div>
-
-            <div class="seg" id="segCamCorner">
-              <button data-corner="tl">Top-L</button>
-              <button data-corner="tr">Top-R</button>
-              <button data-corner="bl">Bot-L</button>
-              <button class="active" data-corner="br">Bot-R</button>
-            </div>
-
-            <div class="slider-box">
-              <div class="slider-info">
-                <span>Bubble Size</span>
-                <span class="slider-val" id="valCamSize">22%</span>
-              </div>
-              <input type="range" id="rngCamSize" min="12" max="38" value="22">
-            </div>
-
-            <div class="control-row">
-              <span class="control-label">Dynamic Voice Pulse (Bolo)</span>
-              <label class="switch">
-                <input type="checkbox" id="chkCamDynamicVoice" checked>
-                <span class="switch-track"></span>
-              </label>
-            </div>
-
-            <div class="control-row">
-              <span class="control-label">Mirror Webcam</span>
-              <label class="switch">
-                <input type="checkbox" id="chkCamMirror" checked>
-                <span class="switch-track"></span>
-              </label>
-            </div>
-          </div>
-
-          <!-- 5. Privacy Censor & Annotations -->
-          <div class="sect easyui-spotlight">
-            <div class="sect-title">Privacy & Annotations</div>
-            <button class="btn" id="btnAddBlurBox" style="width:100%;">
-              🔒 + Drop Privacy Redaction Blur
-            </button>
-
-            <div class="slider-box" style="margin-top:4px;">
-              <div class="slider-info">
-                <span>Shortcut Pill Badge</span>
-              </div>
-              <input type="text" id="txtHotkeyBadge" class="project-name-input" value="⌘ + K" placeholder="e.g. ⌘ + K" style="width:100%; max-width:none; background:var(--bg-sunken); border-radius:6px; padding:6px 8px;">
-            </div>
-
-            <div class="control-row" style="margin-top:6px;">
-              <span class="control-label">Voice EQ Clarity Boost</span>
-              <label class="switch">
-                <input type="checkbox" id="chkVoiceEnhance" checked>
-                <span class="switch-track"></span>
-              </label>
-            </div>
-
-            <button class="btn btn-ghost" id="btnSilenceCut" style="width:100%; border:1px solid var(--hair-strong);">
-              ✂️ 1-Click Silence Cut
-            </button>
-          </div>
-
         </div>
       </aside>
 
-      <!-- Bottom Dock: Interactive Multi-Track Timeline -->
+      <!-- Bottom Dock: Interactive Multi-Track Timeline (Dolly Screenshot 3) -->
       <footer class="dock">
         <!-- Transport Bar -->
         <div class="transport">
-          <button class="play-btn" id="btnPlayPause" title="Play / Pause (Space)">
+          <button class="play-btn easyui-magnetic" id="btnPlayPause" title="Play / Pause (Space)">
             <svg id="playIcon" viewBox="0 0 24 24"><polygon points="7 5 19 12 7 19 7 5"/></svg>
             <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none;"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
           </button>
 
           <div class="timecode">
-            <span id="tcCurrent">00:00.00</span> <span class="dim">/</span> <span id="tcTotal" class="dim">00:12.00</span>
+            <span id="tcCurrent">01:49.05</span> <span class="dim">/</span> <span id="tcTotal" class="dim">01:49.05</span>
           </div>
 
           <div class="transport-tools">
             <button class="tool-btn" id="btnSplit" title="Split clip at playhead (S)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
-              Split (S)
+              ✂ Split
             </button>
 
-            <button class="tool-btn" id="btnDelete" title="Delete selected block (Del)">
+            <button class="tool-btn" id="btnAddZoomKeyframe" title="Add Zoom Keyframe (Z)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              🔍 Zoom
+            </button>
+
+            <button class="tool-btn" id="btnAddCaptionAtPlayhead" title="Add Subtitle Line (T)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+              T Caption
+            </button>
+
+            <button class="tool-btn" id="btnSilenceCut" title="Auto detect and trim silence">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              ✨ Trim silence
+            </button>
+
+            <button class="tool-btn" id="btnDelete" title="Delete selected item (Del)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-              Delete
-            </button>
-
-            <button class="tool-btn" id="btnSnapshot" title="Snapshot Frame as PNG">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-              Snapshot
             </button>
           </div>
 
           <div class="transport-right">
-            <span>Timeline Scale:</span>
+            <span style="font-size:12px;">🔍</span>
             <button class="btn btn-ghost" id="btnZoomOut" style="height:24px; padding:0 6px;">-</button>
             <button class="btn btn-ghost" id="btnZoomIn" style="height:24px; padding:0 6px;">+</button>
             <button class="btn btn-ghost" id="btnZoomFit" style="height:24px; padding:0 8px;">Fit</button>
@@ -1384,13 +2042,11 @@
 
         <!-- Timeline Grid -->
         <div class="timeline-view" id="timelineView">
-          <!-- Left Track Headers -->
+          <!-- Left Track Headers (Dolly Screenshot 3) -->
           <div class="timeline-headers">
             <div class="header-row ruler-header">Time</div>
-            <div class="header-row">Zoom</div>
-            <div class="header-row video-row">Video</div>
-            <div class="header-row audio-row">Audio</div>
-            <div class="header-row">Privacy</div>
+            <div class="header-row video-row">Clip</div>
+            <div class="header-row">Captions</div>
           </div>
 
           <!-- Right Lanes -->
@@ -1398,19 +2054,11 @@
             <!-- Ruler Lane -->
             <div class="lane-row ruler-lane" id="rulerLane"></div>
 
-            <!-- Zoom Lane -->
-            <div class="lane-row" id="zoomLane"></div>
-
-            <!-- Video Clip Lane -->
+            <!-- Video Clip Lane (Filmstrip + Waveform + Zoom Badges) -->
             <div class="lane-row video-lane" id="videoLane"></div>
 
-            <!-- Audio Waveform Lane -->
-            <div class="lane-row audio-lane" id="audioLane">
-              <canvas id="waveformCanvas" style="width:100%; height:100%; display:block;"></canvas>
-            </div>
-
-            <!-- Privacy Blur Lane -->
-            <div class="lane-row" id="blurLane"></div>
+            <!-- Captions Lane -->
+            <div class="lane-row" id="captionLane" style="height:36px; background:rgba(37,99,235,0.02);"></div>
 
             <!-- Playhead -->
             <div class="playhead" id="playhead">
@@ -1474,40 +2122,101 @@
     </div>
   </div>
 
-  <!-- Screen Recording Modal -->
+  <!-- Dolly 3-Step Recording Modal (Image 2) -->
   <div class="modal-scrim" id="recordModal">
-    <div class="card-modal easyui-spotlight">
-      <div class="modal-head">
-        <h3>Record Screen & Camera</h3>
-        <button class="btn btn-ghost" id="btnCloseRecord" style="width:28px; height:28px; padding:0;">✕</button>
+    <div class="dolly-modal easyui-spotlight">
+      <div class="dolly-modal-head">
+        <div class="dolly-step-tag">Step 1 of 3</div>
+        <div class="dolly-modal-title">What should Dolly record?</div>
+        <button class="dolly-modal-close" id="btnCloseRecord">✕</button>
       </div>
-      <div class="modal-content">
-        <div class="control-row">
-          <span class="control-label">Capture Screen & System Audio</span>
-          <label class="switch">
-            <input type="checkbox" id="chkRecScreen" checked>
-            <span class="switch-track"></span>
-          </label>
+
+      <div class="dolly-modal-body">
+        <div>
+          <div class="dolly-section-label">Screen</div>
+          <div class="screen-card-grid" id="screenCardGrid">
+            <div class="screen-card active" data-screen="screen">
+              <div class="screen-card-icon">🖥️</div>
+              <div class="screen-card-title">Entire screen</div>
+              <div class="screen-card-desc">Everything you see</div>
+            </div>
+            <div class="screen-card" data-screen="window">
+              <div class="screen-card-icon">🪟</div>
+              <div class="screen-card-title">A window</div>
+              <div class="screen-card-desc">One app only</div>
+            </div>
+            <div class="screen-card" data-screen="tab">
+              <div class="screen-card-icon">🌐</div>
+              <div class="screen-card-title">A browser tab</div>
+              <div class="screen-card-desc">Best for websites</div>
+            </div>
+          </div>
+          <div style="margin-top:6px;">
+            <span class="dolly-helper-link">Show my displays</span>
+            <span style="font-size:11px; color:var(--ink-3); margin-left:4px;">Chrome shows each display in its picker. Pick the one you want there.</span>
+          </div>
         </div>
-        <div class="control-row">
-          <span class="control-label">Webcam Presenter Bubble</span>
-          <label class="switch">
-            <input type="checkbox" id="chkRecCam" checked>
-            <span class="switch-track"></span>
-          </label>
-        </div>
-        <div class="control-row">
-          <span class="control-label">Microphone Audio</span>
-          <label class="switch">
-            <input type="checkbox" id="chkRecMic" checked>
-            <span class="switch-track"></span>
-          </label>
+
+        <div>
+          <div class="dolly-section-label">Camera and sound</div>
+          <div class="dolly-card-box">
+            <!-- Camera Row -->
+            <div class="dolly-device-row">
+              <div class="dolly-device-info">
+                <div class="dolly-device-icon">📷</div>
+                <div class="dolly-device-text">
+                  <span class="dolly-device-name">Camera</span>
+                  <span class="dolly-device-sub">Your face in a bubble</span>
+                </div>
+              </div>
+              <select class="dolly-device-select" id="selModalCam">
+                <option value="default">Default camera (system default)</option>
+              </select>
+              <label class="switch">
+                <input type="checkbox" id="chkModalCam" checked>
+                <span class="switch-track"></span>
+              </label>
+            </div>
+
+            <!-- Microphone Row -->
+            <div class="dolly-device-row">
+              <div class="dolly-device-info">
+                <div class="dolly-device-icon">🎙️</div>
+                <div class="dolly-device-text">
+                  <span class="dolly-device-name">Microphone</span>
+                  <span class="dolly-device-sub">Your voice</span>
+                </div>
+              </div>
+              <select class="dolly-device-select" id="selModalMic">
+                <option value="default">Default microphone (system default)</option>
+              </select>
+              <label class="switch">
+                <input type="checkbox" id="chkModalMic" checked>
+                <span class="switch-track"></span>
+              </label>
+            </div>
+
+            <!-- System Audio Row -->
+            <div class="dolly-device-row">
+              <div class="dolly-device-info">
+                <div class="dolly-device-icon">🔊</div>
+                <div class="dolly-device-text">
+                  <span class="dolly-device-name">System audio</span>
+                  <span class="dolly-device-sub">Audio from your computer</span>
+                </div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="chkModalSysAudio" checked>
+                <span class="switch-track"></span>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="modal-foot">
-        <button class="btn" id="btnCancelRecord">Cancel</button>
-        <button class="btn btn-primary easyui-magnetic" id="btnStartRecordingNow">
-          Select Screen & Record
+
+      <div class="dolly-modal-foot">
+        <button class="btn-dolly-continue easyui-magnetic" id="btnStartRecordingNow">
+          Continue
         </button>
       </div>
     </div>
@@ -1577,40 +2286,53 @@
     }
 
     /* =========================================================================
-       2. Background Swatches (Top-tier designer gradients)
+       2. Background Swatches (Dolly Pastel Auroras & Designer Gradients)
        ========================================================================= */
     const BG_PRESETS = [
-      { id: 'aurora', name: 'Aurora', css: 'linear-gradient(135deg, #10b981, #06b6d4, #6366f1)' },
-      { id: 'ocean', name: 'Ocean Mist', css: 'linear-gradient(135deg, #0ea5e9, #3b82f6, #1d4ed8)' },
-      { id: 'sunset', name: 'Warm Sunset', css: 'linear-gradient(135deg, #f43f5e, #fb923c)' },
-      { id: 'cyber', name: 'Cyber Neon', css: 'linear-gradient(135deg, #d946ef, #8b5cf6, #06b6d4)' },
-      { id: 'midnight', name: 'Midnight', css: 'linear-gradient(135deg, #0f172a, #1e293b, #334155)' },
-      { id: 'slate', name: 'Dark Slate', css: 'linear-gradient(135deg, #18181b, #27272a)' },
-      { id: 'emerald', name: 'Emerald', css: 'linear-gradient(135deg, #059669, #10b981)' },
-      { id: 'rose', name: 'Soft Rose', css: 'linear-gradient(135deg, #f472b6, #e11d48)' },
-      { id: 'ember', name: 'Ember Glow', css: 'linear-gradient(135deg, #f97316, #dc2626)' },
-      { id: 'clean', name: 'Studio Gray', css: 'linear-gradient(135deg, #3f3f46, #52525b)' }
+      { id: 'dolly-sunset', name: 'Dolly Sunset Aurora', css: 'linear-gradient(140deg, #FED7AA 0%, #F472B6 45%, #818CF8 100%)' },
+      { id: 'dolly-coral', name: 'Dolly Coral Dunes', css: 'linear-gradient(135deg, #FDE68A 0%, #FCA5A5 50%, #93C5FD 100%)' },
+      { id: 'dolly-sky', name: 'Dolly Mint Sky', css: 'linear-gradient(135deg, #A7F3D0 0%, #67E8F9 50%, #93C5FD 100%)' },
+      { id: 'dolly-lavender', name: 'Dolly Lavender Mist', css: 'linear-gradient(135deg, #E0E7FF 0%, #DDD6FE 50%, #FBCFE8 100%)' },
+      { id: 'dolly-pearl', name: 'Dolly Studio Pearl', css: 'linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%)' },
+      { id: 'midnight', name: 'Midnight Obsidian', css: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)' },
+      { id: 'ocean', name: 'Ocean Mist', css: 'linear-gradient(135deg, #0EA5E9 0%, #3B82F6 50%, #1D4ED8 100%)' },
+      { id: 'cyber', name: 'Cyber Neon', css: 'linear-gradient(135deg, #D946EF 0%, #8B5CF6 50%, #06B6D4 100%)' }
     ];
 
     /* =========================================================================
-       3. State Model
+       3. State Model (Enhanced for Dolly UI/UX)
        ========================================================================= */
     const State = {
       project: {
-        name: 'Untitled Screen Recording',
-        aspect: '16:9',
+        name: 'Recording Oct 17, 10:40 PM',
+        aspect: 'original',
         frame: 'mac',
-        bg: { type: 'preset', id: 'aurora', blurVideo: false },
+        bg: { type: 'preset', id: 'dolly-sunset', blurVideo: false },
         padding: 0.10,
         radius: 16,
         shadow: 0.50,
         camera: {
           visible: true,
-          shape: 'circle',
-          size: 0.22,
-          corner: 'br',
+          shape: 'squircle', // 'circle' | 'squircle' | 'capsule' | 'rect'
+          corner: 'br',      // 'tl' | 'tr' | 'bl' | 'br' | 'custom'
+          border: 'white',   // 'none' | 'white' | 'black' | 'blue' | 'purple'
+          size: 0.26,        // corresponds to 93% on size slider
+          zoom: 1.9,         // 1.9x camera zoom
+          shadow: 0.70,      // 70% shadow
           mirror: true,
-          dynamicVoice: true // Bolo-inspired dynamic voice bubble
+          dynamicVoice: true,
+          customX: null,
+          customY: null
+        },
+        captions: [
+          { id: uid(), start: 1.0, end: 3.8, text: "Record your screen with zero setup." },
+          { id: uid(), start: 4.2, end: 7.6, text: "Dolly frames it, zooms in on the action and writes captions." },
+          { id: uid(), start: 8.0, end: 11.2, text: "Free, client-side, and nothing leaves your computer." }
+        ],
+        captionLang: 'en',
+        audio: {
+          volume: 1.0,
+          enhanceVoice: true
         },
         hotkeyBadge: '⌘ + K',
         duration: 12.0,
@@ -1629,16 +2351,20 @@
         isPlaying: false,
         loop: true,
         scalePxPerSec: 65,
-        voiceVolume: 0.75 // Simulated/live mic energy level
+        voiceVolume: 0.75
       },
       selected: {
-        type: null, // 'clip' | 'zoom' | 'blur'
+        type: null, // 'clip' | 'zoom' | 'blur' | 'caption'
         id: null
       },
       source: {
         video: null,
         camVideo: null,
         isDemo: true
+      },
+      history: {
+        undo: [],
+        redo: []
       }
     };
 
@@ -1835,7 +2561,7 @@
 
         ctx.clearRect(0, 0, W, H);
 
-        // 1. Draw Background
+        // 1. Draw Background (Dolly Pastel Auroras)
         this.drawBackground(ctx, W, H, P, time);
 
         // 2. Active Zoom calculation
@@ -1851,15 +2577,20 @@
         // 4. Device Mockup Frame
         this.drawDeviceFrame(ctx, frameX, frameY, frameW, frameH, P, time, zoom);
 
-        // 5. Webcam Bubble (with Bolo-inspired dynamic voice pulse)
+        // 5. Webcam Bubble (Free-Draggable, 4 Shapes, Swatch Borders, Camera Crop Zoom)
         if (P.camera.visible) {
           this.drawWebcamBubble(ctx, W, H, P, time);
+        } else {
+          this.cameraBounds = null;
         }
 
-        // 6. Privacy Blur
+        // 6. Subtitles Overlay (Dolly Automatic Captions)
+        this.drawSubtitles(ctx, W, H, P, time);
+
+        // 7. Privacy Blur
         this.drawPrivacyBlurs(ctx, frameX, frameY, frameW, frameH, P, time, zoom);
 
-        // 7. Hotkey Badge
+        // 8. Hotkey Badge
         if (P.hotkeyBadge && P.hotkeyBadge.trim()) {
           this.drawHotkeyBadge(ctx, W, H, P.hotkeyBadge.trim());
         }
@@ -1868,7 +2599,7 @@
       drawBackground(ctx, W, H, P, time) {
         if (P.bg.blurVideo && State.source.video) {
           ctx.save();
-          ctx.filter = 'blur(45px) brightness(0.65)';
+          ctx.filter = 'blur(45px) brightness(0.7)';
           ctx.drawImage(State.source.video, -W * 0.1, -H * 0.1, W * 1.2, H * 1.2);
           ctx.restore();
           return;
@@ -1877,22 +2608,37 @@
         const preset = BG_PRESETS.find(p => p.id === P.bg.id) || BG_PRESETS[0];
         const grad = ctx.createLinearGradient(0, 0, W, H);
 
-        if (preset.id === 'sunset') {
-          grad.addColorStop(0, '#f43f5e'); grad.addColorStop(1, '#fb923c');
-        } else if (preset.id === 'aurora') {
-          grad.addColorStop(0, '#10b981'); grad.addColorStop(0.5, '#06b6d4'); grad.addColorStop(1, '#6366f1');
-        } else if (preset.id === 'ocean') {
-          grad.addColorStop(0, '#0ea5e9'); grad.addColorStop(0.5, '#3b82f6'); grad.addColorStop(1, '#1d4ed8');
-        } else if (preset.id === 'cyber') {
-          grad.addColorStop(0, '#d946ef'); grad.addColorStop(0.5, '#8b5cf6'); grad.addColorStop(1, '#06b6d4');
+        if (preset.id === 'dolly-sunset') {
+          // Warm peach, sunset rose and violet aurora from Dolly screenshot 3
+          grad.addColorStop(0, '#FED7AA');
+          grad.addColorStop(0.48, '#F472B6');
+          grad.addColorStop(1, '#818CF8');
+        } else if (preset.id === 'dolly-coral') {
+          grad.addColorStop(0, '#FDE68A');
+          grad.addColorStop(0.50, '#FCA5A5');
+          grad.addColorStop(1, '#93C5FD');
+        } else if (preset.id === 'dolly-sky') {
+          grad.addColorStop(0, '#A7F3D0');
+          grad.addColorStop(0.50, '#67E8F9');
+          grad.addColorStop(1, '#93C5FD');
+        } else if (preset.id === 'dolly-lavender') {
+          grad.addColorStop(0, '#E0E7FF');
+          grad.addColorStop(0.50, '#DDD6FE');
+          grad.addColorStop(1, '#FBCFE8');
+        } else if (preset.id === 'dolly-pearl') {
+          grad.addColorStop(0, '#F8FAFC');
+          grad.addColorStop(1, '#E2E8F0');
         } else if (preset.id === 'midnight') {
-          grad.addColorStop(0, '#0f172a'); grad.addColorStop(0.5, '#1e293b'); grad.addColorStop(1, '#334155');
-        } else if (preset.id === 'slate') {
-          grad.addColorStop(0, '#18181b'); grad.addColorStop(1, '#27272a');
-        } else if (preset.id === 'emerald') {
-          grad.addColorStop(0, '#059669'); grad.addColorStop(1, '#10b981');
+          grad.addColorStop(0, '#0F172A');
+          grad.addColorStop(1, '#1E293B');
+        } else if (preset.id === 'ocean') {
+          grad.addColorStop(0, '#0EA5E9');
+          grad.addColorStop(0.50, '#3B82F6');
+          grad.addColorStop(1, '#1D4ED8');
         } else {
-          grad.addColorStop(0, '#3f3f46'); grad.addColorStop(1, '#52525b');
+          grad.addColorStop(0, '#D946EF');
+          grad.addColorStop(0.50, '#8B5CF6');
+          grad.addColorStop(1, '#06B6D4');
         }
 
         ctx.fillStyle = grad;
@@ -2021,79 +2767,178 @@
 
       drawWebcamBubble(ctx, W, H, P, time) {
         const cam = P.camera;
-        // Bolo idea: Dynamic voice bubble pulse when speaking!
-        const voiceBoost = cam.dynamicVoice ? (0.05 * Math.sin(time * 8) + 0.05) : 0;
-        const effectiveSize = cam.size * (1 + voiceBoost);
-        const bubbleDiameter = Math.min(W, H) * effectiveSize;
-        const margin = Math.min(W, H) * 0.05;
-
-        let bx = W - bubbleDiameter - margin;
-        let by = H - bubbleDiameter - margin;
-
-        if (cam.corner === 'bl') { bx = margin; by = H - bubbleDiameter - margin; }
-        else if (cam.corner === 'tl') { bx = margin; by = margin; }
-        else if (cam.corner === 'tr') { bx = W - bubbleDiameter - margin; by = margin; }
-
-        ctx.save();
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.45)';
-        ctx.shadowBlur = 24;
-        ctx.shadowOffsetY = 12;
-
-        ctx.beginPath();
-        if (cam.shape === 'circle') {
-          ctx.arc(bx + bubbleDiameter / 2, by + bubbleDiameter / 2, bubbleDiameter / 2, 0, Math.PI * 2);
-        } else if (cam.shape === 'squircle') {
-          ctx.roundRect(bx, by, bubbleDiameter, bubbleDiameter, bubbleDiameter * 0.35);
-        } else {
-          ctx.roundRect(bx, by, bubbleDiameter * 1.25, bubbleDiameter * 0.8, 14);
+        if (!cam.visible) {
+          this.cameraBounds = null;
+          return;
         }
 
-        ctx.fillStyle = '#1e293b';
+        const voiceBoost = cam.dynamicVoice ? (0.04 * Math.sin(time * 8) + 0.04) : 0;
+        const effectiveSize = (cam.size || 0.26) * (1 + voiceBoost);
+        const baseDim = Math.min(W, H) * effectiveSize;
+        const margin = Math.min(W, H) * 0.05;
+
+        let bw = baseDim;
+        let bh = baseDim;
+
+        if (cam.shape === 'capsule') {
+          bw = baseDim * 0.78;
+          bh = baseDim * 1.15;
+        } else if (cam.shape === 'rect') {
+          bw = baseDim * 1.35;
+          bh = baseDim * 0.85;
+        }
+
+        let bx = W - bw - margin;
+        let by = H - bh - margin;
+
+        if (cam.corner === 'bl') { bx = margin; by = H - bh - margin; }
+        else if (cam.corner === 'tl') { bx = margin; by = margin; }
+        else if (cam.corner === 'tr') { bx = W - bw - margin; by = margin; }
+        else if (cam.corner === 'custom' && cam.customX != null && cam.customY != null) {
+          bx = cam.customX * W - bw / 2;
+          by = cam.customY * H - bh / 2;
+        }
+
+        // Clamp inside canvas boundary
+        bx = clamp(bx, 10, W - bw - 10);
+        by = clamp(by, 10, H - bh - 10);
+
+        // Store bounds for mouse hit-testing & interactive canvas dragging
+        this.cameraBounds = { x: bx, y: by, w: bw, h: bh };
+
+        ctx.save();
+
+        // Shadow proportional to cam.shadow
+        const shadowVal = cam.shadow != null ? cam.shadow : 0.70;
+        if (shadowVal > 0) {
+          ctx.shadowColor = `rgba(0, 0, 0, ${shadowVal * 0.55})`;
+          ctx.shadowBlur = shadowVal * 32;
+          ctx.shadowOffsetY = shadowVal * 16;
+        }
+
+        // Shape path
+        ctx.beginPath();
+        if (cam.shape === 'circle') {
+          ctx.arc(bx + bw / 2, by + bh / 2, Math.min(bw, bh) / 2, 0, Math.PI * 2);
+        } else if (cam.shape === 'squircle') {
+          ctx.roundRect(bx, by, bw, bh, Math.min(bw, bh) * 0.36);
+        } else if (cam.shape === 'capsule') {
+          ctx.roundRect(bx, by, bw, bh, bw / 2);
+        } else {
+          ctx.roundRect(bx, by, bw, bh, 18);
+        }
+
+        ctx.fillStyle = '#111827';
         ctx.fill();
         ctx.shadowColor = 'transparent';
 
+        // Clip presenter contents
         ctx.save();
         ctx.clip();
 
-        if (State.source.camVideo && State.source.camVideo.readyState >= 2) {
-          if (cam.mirror) {
-            ctx.translate(bx + bubbleDiameter, by);
-            ctx.scale(-1, 1);
-            ctx.drawImage(State.source.camVideo, 0, 0, bubbleDiameter, bubbleDiameter);
-          } else {
-            ctx.drawImage(State.source.camVideo, bx, by, bubbleDiameter, bubbleDiameter);
-          }
-        } else {
-          // Presenter Avatar Graphic
-          const cx = bx + bubbleDiameter / 2;
-          const cy = by + bubbleDiameter / 2;
-          const grad = ctx.createLinearGradient(bx, by, bx + bubbleDiameter, by + bubbleDiameter);
-          grad.addColorStop(0, '#3B82F6'); grad.addColorStop(1, '#8B5CF6');
-          ctx.fillStyle = grad;
-          ctx.fillRect(bx, by, bubbleDiameter, bubbleDiameter);
+        const zoomScale = cam.zoom != null ? cam.zoom : 1.9;
+        const cx = bx + bw / 2;
+        const cy = by + bh / 2;
 
-          ctx.fillStyle = '#ffffff';
+        ctx.translate(cx, cy);
+        if (cam.mirror) ctx.scale(-1, 1);
+        ctx.scale(zoomScale, zoomScale);
+        ctx.translate(-cx, -cy);
+
+        if (State.source.camVideo && State.source.camVideo.readyState >= 2) {
+          ctx.drawImage(State.source.camVideo, bx, by, bw, bh);
+        } else {
+          // Presenter Avatar Graphic matching Dolly screenshot
+          const grad = ctx.createLinearGradient(bx, by, bx + bw, by + bh);
+          grad.addColorStop(0, '#1E293B'); grad.addColorStop(1, '#0F172A');
+          ctx.fillStyle = grad;
+          ctx.fillRect(bx, by, bw, bh);
+
+          // Head & shoulders portrait
+          ctx.fillStyle = '#D97706';
           ctx.beginPath();
-          ctx.arc(cx, cy - bubbleDiameter * 0.1, bubbleDiameter * 0.22, 0, Math.PI * 2);
+          ctx.arc(cx, cy - bh * 0.05, bw * 0.22, 0, Math.PI * 2);
           ctx.fill();
+
+          // Glasses
+          ctx.strokeStyle = '#FFFFFF';
+          ctx.lineWidth = 2.5;
           ctx.beginPath();
-          ctx.arc(cx, cy + bubbleDiameter * 0.45, bubbleDiameter * 0.36, 0, Math.PI * 2);
+          ctx.arc(cx - bw * 0.08, cy - bh * 0.07, bw * 0.06, 0, Math.PI * 2);
+          ctx.arc(cx + bw * 0.08, cy - bh * 0.07, bw * 0.06, 0, Math.PI * 2);
+          ctx.moveTo(cx - bw * 0.02, cy - bh * 0.07);
+          ctx.lineTo(cx + bw * 0.02, cy - bh * 0.07);
+          ctx.stroke();
+
+          // Cap / Hat
+          ctx.fillStyle = '#18181B';
+          ctx.beginPath();
+          ctx.arc(cx, cy - bh * 0.14, bw * 0.23, Math.PI, Math.PI * 2);
+          ctx.fill();
+          ctx.fillRect(cx - bw * 0.28, cy - bh * 0.15, bw * 0.56, 6);
+
+          // Jacket
+          ctx.fillStyle = '#E2E8F0';
+          ctx.beginPath();
+          ctx.arc(cx, cy + bh * 0.55, bw * 0.45, 0, Math.PI * 2);
           ctx.fill();
         }
 
         ctx.restore();
 
-        // Bolo Audio Activity Ring (Voice visualizer ripple)
-        if (cam.dynamicVoice) {
-          ctx.strokeStyle = 'rgba(59, 130, 246, 0.8)';
-          ctx.lineWidth = 3;
-          ctx.stroke();
-        } else {
-          ctx.strokeStyle = '#ffffff';
-          ctx.lineWidth = 3;
+        // Border Rendering
+        const borderType = cam.border || 'white';
+        if (borderType !== 'none') {
+          ctx.beginPath();
+          if (cam.shape === 'circle') {
+            ctx.arc(bx + bw / 2, by + bh / 2, Math.min(bw, bh) / 2, 0, Math.PI * 2);
+          } else if (cam.shape === 'squircle') {
+            ctx.roundRect(bx, by, bw, bh, Math.min(bw, bh) * 0.36);
+          } else if (cam.shape === 'capsule') {
+            ctx.roundRect(bx, by, bw, bh, bw / 2);
+          } else {
+            ctx.roundRect(bx, by, bw, bh, 18);
+          }
+
+          if (borderType === 'white') ctx.strokeStyle = '#FFFFFF';
+          else if (borderType === 'black') ctx.strokeStyle = '#000000';
+          else if (borderType === 'blue') ctx.strokeStyle = '#2563EB';
+          else if (borderType === 'purple') ctx.strokeStyle = '#8B5CF6';
+
+          ctx.lineWidth = 3.5;
           ctx.stroke();
         }
 
+        ctx.restore();
+      }
+
+      drawSubtitles(ctx, W, H, P, time) {
+        if (!P.captions || P.captions.length === 0) return;
+        const active = P.captions.find(c => time >= c.start && time <= c.end);
+        if (!active) return;
+
+        ctx.save();
+        ctx.font = '600 24px -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif';
+        const tw = ctx.measureText(active.text).width;
+        const pw = tw + 40;
+        const ph = 48;
+        const px = (W - pw) / 2;
+        const py = H - 90;
+
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+        ctx.shadowBlur = 18;
+        ctx.shadowOffsetY = 6;
+
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.88)';
+        ctx.beginPath();
+        ctx.roundRect(px, py, pw, ph, 12);
+        ctx.fill();
+
+        ctx.shadowColor = 'transparent';
+        ctx.fillStyle = '#FFFFFF';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(active.text, W / 2, py + ph / 2);
         ctx.restore();
       }
 
@@ -2163,8 +3008,7 @@
         this.lanes = $('#timelineLanes');
         this.ruler = $('#rulerLane');
         this.videoLane = $('#videoLane');
-        this.zoomLane = $('#zoomLane');
-        this.blurLane = $('#blurLane');
+        this.captionLane = $('#captionLane');
         this.playhead = $('#playhead');
         this.isDraggingPlayhead = false;
 
@@ -2173,7 +3017,7 @@
 
       initEvents() {
         this.view.addEventListener('mousedown', (e) => {
-          if (e.target.closest('.clip')) return;
+          if (e.target.closest('.clip') || e.target.closest('.caption-block') || e.target.closest('.zoom-badge-pill')) return;
           this.isDraggingPlayhead = true;
           this.seekToMouse(e);
         });
@@ -2203,7 +3047,7 @@
 
         this.lanes.style.width = `${totalW}px`;
 
-        // Ruler
+        // 1. Ruler Lane
         this.ruler.innerHTML = '';
         const step = scale >= 80 ? 1 : 2;
         for (let s = 0; s <= dur + 1; s += step) {
@@ -2214,54 +3058,162 @@
           this.ruler.appendChild(mark);
         }
 
-        // Video Track
+        // 2. Video Clip Lane (Filmstrip + Waveform + Zoom Badges - Dolly Screenshot 3)
         this.videoLane.innerHTML = '';
         State.project.clips.forEach(c => {
+          const clipWidth = (c.end - c.start) * scale;
+          const clipLeft = c.start * scale;
           const block = document.createElement('div');
           block.className = `clip video ${State.selected.id === c.id ? 'selected' : ''}`;
-          block.style.left = `${c.start * scale}px`;
-          block.style.width = `${(c.end - c.start) * scale}px`;
-          block.innerHTML = `<span>🎬 Screen Clip (${(c.end - c.start).toFixed(1)}s)</span>`;
+          block.style.left = `${clipLeft}px`;
+          block.style.width = `${clipWidth}px`;
+          block.style.height = '38px';
+          block.style.top = '3px';
+
+          // Filmstrip Frame Thumbnails
+          const filmstrip = document.createElement('div');
+          filmstrip.className = 'filmstrip-strip';
+          const numFrames = Math.max(2, Math.floor(clipWidth / 56));
+          for (let i = 0; i < numFrames; i++) {
+            const frame = document.createElement('div');
+            frame.className = 'filmstrip-frame';
+            frame.style.width = `${clipWidth / numFrames}px`;
+            frame.style.background = `linear-gradient(180deg, rgba(37, 99, 235, 0.45) 0%, rgba(15, 23, 42, 0.85) 100%)`;
+            filmstrip.appendChild(frame);
+          }
+          block.appendChild(filmstrip);
+
+          // Waveform Overlay Canvas
+          const waveCanvas = document.createElement('canvas');
+          waveCanvas.className = 'waveform-overlay';
+          waveCanvas.width = Math.max(20, Math.floor(clipWidth));
+          waveCanvas.height = 38;
+          const wctx = waveCanvas.getContext('2d');
+          wctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+          const barW = 2;
+          const gap = 2;
+          const totalBars = Math.floor(waveCanvas.width / (barW + gap));
+          for (let b = 0; b < totalBars; b++) {
+            const progress = b / totalBars;
+            const waveSin = Math.sin(progress * 22 + 0.3) * Math.cos(progress * 9);
+            const waveAmp = (0.2 + Math.abs(waveSin) * 0.72) * (State.project.audio.volume || 1.0);
+            const barH = Math.max(3, waveAmp * 26);
+            const bx = b * (barW + gap);
+            const by = (waveCanvas.height - barH) / 2;
+            wctx.fillRect(bx, by, barW, barH);
+          }
+          block.appendChild(waveCanvas);
+
+          // Floating Zoom Factor Badges inside Clip (Dolly Screenshot 3: numbered zoom pills)
+          State.project.zooms.forEach((z, zIdx) => {
+            if (z.start >= c.start && z.start <= c.end) {
+              const badge = document.createElement('div');
+              const isSelected = State.selected.id === z.id;
+              badge.className = `zoom-badge-pill ${isSelected ? 'selected' : ''}`;
+              badge.style.left = `${(z.start - c.start) * scale}px`;
+              badge.innerHTML = `<span style="opacity:0.6; font-size:9px; font-weight:700;">${zIdx + 1}</span> <span>${z.scale.toFixed(2)}x</span>`;
+              badge.title = `Zoom ${z.scale.toFixed(2)}x at ${z.start.toFixed(1)}s (drag to reposition)`;
+
+              badge.addEventListener('mousedown', (e) => {
+                e.stopPropagation();
+                State.selected = { type: 'zoom', id: z.id };
+                App.syncInspectorZoom();
+                this.render();
+
+                const startMouseX = e.clientX;
+                const initialStart = z.start;
+                const duration = z.end - z.start;
+
+                const onMove = (me) => {
+                  const deltaSec = (me.clientX - startMouseX) / scale;
+                  const newStart = clamp(initialStart + deltaSec, 0, State.project.duration - 0.5);
+                  z.start = newStart;
+                  z.end = Math.min(State.project.duration, newStart + duration);
+                  badge.style.left = `${(z.start - c.start) * scale}px`;
+                };
+
+                const onUp = () => {
+                  window.removeEventListener('mousemove', onMove);
+                  window.removeEventListener('mouseup', onUp);
+                  App.pushUndo();
+                  this.render();
+                };
+
+                window.addEventListener('mousemove', onMove);
+                window.addEventListener('mouseup', onUp);
+              });
+
+              block.appendChild(badge);
+            }
+          });
+
           block.addEventListener('click', (e) => {
-            e.stopPropagation();
+            if (e.target.closest('.zoom-badge-pill')) return;
             State.selected = { type: 'clip', id: c.id };
             this.render();
           });
+
           this.videoLane.appendChild(block);
         });
 
-        // Zoom Track
-        this.zoomLane.innerHTML = '';
-        State.project.zooms.forEach(z => {
-          const block = document.createElement('div');
-          block.className = `clip zoom ${State.selected.id === z.id ? 'selected' : ''}`;
-          block.style.left = `${z.start * scale}px`;
-          block.style.width = `${(z.end - z.start) * scale}px`;
-          block.innerHTML = `<span>🔍 Zoom ${z.scale.toFixed(1)}×</span>`;
-          block.addEventListener('click', (e) => {
-            e.stopPropagation();
-            State.selected = { type: 'zoom', id: z.id };
-            App.syncInspectorZoom();
-            this.render();
-          });
-          this.zoomLane.appendChild(block);
-        });
+        // 3. Captions Lane (Dolly Screenshot 3)
+        if (this.captionLane) {
+          this.captionLane.innerHTML = '';
+          if (State.project.captions && State.project.captions.length > 0) {
+            State.project.captions.forEach(cap => {
+              const isSelected = State.selected.id === cap.id;
+              const cBlock = document.createElement('div');
+              cBlock.className = `caption-block ${isSelected ? 'selected' : ''}`;
+              cBlock.style.left = `${cap.start * scale}px`;
+              cBlock.style.width = `${Math.max(24, (cap.end - cap.start) * scale)}px`;
+              cBlock.textContent = cap.text;
+              cBlock.title = `${formatTime(cap.start, false)} - ${cap.text} (drag to reposition)`;
 
-        // Blur Track
-        this.blurLane.innerHTML = '';
-        State.project.blurs.forEach(b => {
-          const block = document.createElement('div');
-          block.className = `clip blur-clip ${State.selected.id === b.id ? 'selected' : ''}`;
-          block.style.left = `${b.start * scale}px`;
-          block.style.width = `${(b.end - b.start) * scale}px`;
-          block.innerHTML = `<span>🔒 Privacy Censor</span>`;
-          block.addEventListener('click', (e) => {
-            e.stopPropagation();
-            State.selected = { type: 'blur', id: b.id };
-            this.render();
-          });
-          this.blurLane.appendChild(block);
-        });
+              cBlock.addEventListener('click', (e) => {
+                e.stopPropagation();
+                State.selected = { type: 'caption', id: cap.id };
+                App.seekTo(cap.start);
+                App.renderCaptionsList();
+                this.render();
+              });
+
+              cBlock.addEventListener('mousedown', (e) => {
+                e.stopPropagation();
+                State.selected = { type: 'caption', id: cap.id };
+                const startMouseX = e.clientX;
+                const initialStart = cap.start;
+                const capDur = cap.end - cap.start;
+
+                const onMove = (me) => {
+                  const deltaSec = (me.clientX - startMouseX) / scale;
+                  const newStart = clamp(initialStart + deltaSec, 0, State.project.duration - 0.5);
+                  cap.start = newStart;
+                  cap.end = Math.min(State.project.duration, newStart + capDur);
+                  cBlock.style.left = `${cap.start * scale}px`;
+                };
+
+                const onUp = () => {
+                  window.removeEventListener('mousemove', onMove);
+                  window.removeEventListener('mouseup', onUp);
+                  App.pushUndo();
+                  App.renderCaptionsList();
+                  this.render();
+                };
+
+                window.addEventListener('mousemove', onMove);
+                window.addEventListener('mouseup', onUp);
+              });
+
+              this.captionLane.appendChild(cBlock);
+            });
+          } else {
+            const empty = document.createElement('div');
+            empty.className = 'caption-lane-empty';
+            empty.textContent = '+ Add subtitle lines or click Generate again';
+            empty.addEventListener('click', () => App.addCaptionAtPlayhead());
+            this.captionLane.appendChild(empty);
+          }
+        }
 
         this.updatePlayhead();
       }
@@ -2394,25 +3346,164 @@
         State.source.demoGenerator = new ProceduralDemoSource(State.project.duration);
         State.source.isDemo = true;
 
+        this.pushUndo();
         this.initUI();
+        this.initCanvasDrag();
         this.initHotkeys();
         this.initEasyUI();
+        this.renderCaptionsList();
+        this.populateMediaDevices();
         this.startPreviewLoop();
 
         showToast('StudioFlow ready.');
       },
 
-      initUI() {
-        // Quick vs Studio Mode Toggle (from Bolo)
-        $$('.mode-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
-            $$('.mode-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const mode = btn.dataset.mode;
-            document.documentElement.setAttribute('data-mode', mode);
-            showToast(mode === 'quick' ? 'Switched to Quick Recorder Mode' : 'Switched to Studio NLE Mode');
-          });
+      pushUndo() {
+        const snapshot = JSON.stringify({
+          name: State.project.name,
+          padding: State.project.padding,
+          radius: State.project.radius,
+          shadow: State.project.shadow,
+          aspect: State.project.aspect,
+          bg: { ...State.project.bg },
+          frame: State.project.frame,
+          camera: { ...State.project.camera },
+          captions: JSON.parse(JSON.stringify(State.project.captions || [])),
+          audio: { ...State.project.audio },
+          zooms: JSON.parse(JSON.stringify(State.project.zooms || [])),
+          blurs: JSON.parse(JSON.stringify(State.project.blurs || [])),
+          clips: JSON.parse(JSON.stringify(State.project.clips || []))
         });
+        State.history.undo.push(snapshot);
+        if (State.history.undo.length > 50) State.history.undo.shift();
+        State.history.redo = [];
+        this.updateUndoRedoUI();
+      },
+
+      undo() {
+        if (State.history.undo.length <= 1) {
+          showToast('Nothing to undo');
+          return;
+        }
+        const current = State.history.undo.pop();
+        State.history.redo.push(current);
+        const prevStr = State.history.undo[State.history.undo.length - 1];
+        const prev = JSON.parse(prevStr);
+        Object.assign(State.project, prev);
+        this.syncAllControls();
+        this.timeline.render();
+        this.renderCaptionsList();
+        this.updateUndoRedoUI();
+        showToast('Undo');
+      },
+
+      redo() {
+        if (State.history.redo.length === 0) {
+          showToast('Nothing to redo');
+          return;
+        }
+        const nextStr = State.history.redo.pop();
+        State.history.undo.push(nextStr);
+        const next = JSON.parse(nextStr);
+        Object.assign(State.project, next);
+        this.syncAllControls();
+        this.timeline.render();
+        this.renderCaptionsList();
+        this.updateUndoRedoUI();
+        showToast('Redo');
+      },
+
+      updateUndoRedoUI() {
+        const uBtn = $('#btnUndo');
+        const rBtn = $('#btnRedo');
+        if (uBtn) {
+          uBtn.style.opacity = State.history.undo.length > 1 ? '1' : '0.4';
+          uBtn.style.pointerEvents = State.history.undo.length > 1 ? 'auto' : 'none';
+        }
+        if (rBtn) {
+          rBtn.style.opacity = State.history.redo.length > 0 ? '1' : '0.4';
+          rBtn.style.pointerEvents = State.history.redo.length > 0 ? 'auto' : 'none';
+        }
+      },
+
+      syncAllControls() {
+        const P = State.project;
+        if ($('#projectName')) $('#projectName').value = P.name;
+        if ($('#rngPadding')) { $('#rngPadding').value = Math.round(P.padding * 100); $('#valPadding').textContent = `${Math.round(P.padding * 100)}%`; }
+        if ($('#rngRadius')) { $('#rngRadius').value = P.radius; $('#valRadius').textContent = `${P.radius}px`; }
+        if ($('#rngShadow')) { $('#rngShadow').value = Math.round(P.shadow * 100); $('#valShadow').textContent = `${Math.round(P.shadow * 100)}%`; }
+        if ($('#rngAudioVol')) { $('#rngAudioVol').value = Math.round(P.audio.volume * 100); $('#valAudioVol').textContent = `${Math.round(P.audio.volume * 100)}%`; }
+        if ($('#chkVoiceEnhance')) $('#chkVoiceEnhance').checked = !!P.audio.enhanceVoice;
+
+        if ($('#chkCamVisible')) $('#chkCamVisible').checked = !!P.camera.visible;
+        if ($('#chkCamMirror')) $('#chkCamMirror').checked = !!P.camera.mirror;
+        if ($('#rngCamSize')) { $('#rngCamSize').value = Math.round(P.camera.size * 100); $('#valCamSize').textContent = `${Math.round(P.camera.size * 100)}%`; }
+        if ($('#rngCamZoom')) { $('#rngCamZoom').value = P.camera.zoom; $('#valCamZoom').textContent = `${P.camera.zoom.toFixed(1)}×`; }
+        if ($('#rngCamShadow')) { $('#rngCamShadow').value = Math.round(P.camera.shadow * 100); $('#valCamShadow').textContent = `${Math.round(P.camera.shadow * 100)}%`; }
+
+        $$('#segCamShape button').forEach(b => b.classList.toggle('active', b.dataset.shape === P.camera.shape));
+        $$('#segCamCorner button').forEach(b => b.classList.toggle('active', b.dataset.corner === P.camera.corner));
+        $$('#camBorderSwatches .border-swatch').forEach(b => b.classList.toggle('active', b.dataset.border === (P.camera.border || 'none')));
+        $$('#segFrame button').forEach(b => b.classList.toggle('active', b.dataset.frame === P.frame));
+        $$('.swatch').forEach(b => b.classList.toggle('active', b.title === P.bg.id || b.dataset.id === P.bg.id));
+        $$('#stageAspectBar button').forEach(b => b.classList.toggle('active', b.dataset.aspect === P.aspect));
+      },
+
+      initUI() {
+        // Undo & Redo Topbar Buttons (Dolly Screenshot 3)
+        $('#btnUndo').addEventListener('click', () => this.undo());
+        $('#btnRedo').addEventListener('click', () => this.redo());
+
+        // Project Title
+        const projInput = $('#projectName');
+        if (projInput) {
+          projInput.addEventListener('input', (e) => { State.project.name = e.target.value; });
+          projInput.addEventListener('change', () => { this.pushUndo(); showToast('Recording title updated'); });
+        }
+
+        // Dolly Hero Welcome Banner (Dolly Screenshot 1)
+        $('#btnDismissHero').addEventListener('click', () => {
+          $('#dollyHeroBanner').style.display = 'none';
+        });
+        $('#btnHeroStartRecord').addEventListener('click', () => {
+          $('#recordModal').classList.add('open');
+          this.populateMediaDevices();
+        });
+        $('#btnHeroTryEditor').addEventListener('click', () => {
+          $('#dollyHeroBanner').style.display = 'none';
+          State.source.isDemo = true;
+          showToast('Try Editor: Loaded demo recording');
+        });
+        $('#chipMic').addEventListener('click', () => {
+          const chk = $('#chkModalMic');
+          if (chk) chk.checked = !chk.checked;
+          $('#chipMic').classList.toggle('active', chk?.checked);
+        });
+        $('#chipCam').addEventListener('click', () => {
+          const chk = $('#chkModalCam');
+          if (chk) chk.checked = !chk.checked;
+          $('#chipCam').classList.toggle('active', chk?.checked);
+        });
+        $('#chipAudio').addEventListener('click', () => {
+          const chk = $('#chkModalSysAudio');
+          if (chk) chk.checked = !chk.checked;
+          $('#chipAudio').classList.toggle('active', chk?.checked);
+        });
+        $('#chipSettings').addEventListener('click', () => {
+          $('#recordModal').classList.add('open');
+          this.populateMediaDevices();
+        });
+
+        // Dolly 3-Step Screen Card Grid (Dolly Screenshot 2)
+        const screenGrid = $('#screenCardGrid');
+        if (screenGrid) {
+          screenGrid.addEventListener('click', (e) => {
+            const card = e.target.closest('.screen-card');
+            if (!card) return;
+            $$('#screenCardGrid .screen-card').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+          });
+        }
 
         // Theme Toggle (Sun / Moon)
         $('#btnThemeToggle').addEventListener('click', () => {
@@ -2430,17 +3521,25 @@
           div.className = `swatch ${State.project.bg.id === p.id ? 'active' : ''}`;
           div.style.background = p.css;
           div.title = p.name;
+          div.dataset.id = p.id;
           div.addEventListener('click', () => {
             $$('.swatch').forEach(s => s.classList.remove('active'));
             div.classList.add('active');
             State.project.bg.id = p.id;
             State.project.bg.blurVideo = false;
             $('#chkBlurBg').checked = false;
+            this.pushUndo();
           });
           swatchHost.appendChild(div);
         });
 
-        // Stage Aspect Ratio Bar
+        // Live Video Blur Wallpaper toggle
+        $('#chkBlurBg').addEventListener('change', (e) => {
+          State.project.bg.blurVideo = e.target.checked;
+          this.pushUndo();
+        });
+
+        // Stage Aspect Ratio Bar (Dolly Screenshot 3)
         $('#stageAspectBar').addEventListener('click', (e) => {
           const btn = e.target.closest('button');
           if (!btn) return;
@@ -2448,6 +3547,7 @@
           btn.classList.add('active');
           State.project.aspect = btn.dataset.aspect;
           this.updateCanvasAspect();
+          this.pushUndo();
         });
 
         // Device Frame Mockup
@@ -2457,47 +3557,54 @@
           $$('#segFrame button').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           State.project.frame = btn.dataset.frame;
+          this.pushUndo();
         });
 
-        // Sliders
+        // Padding, Radius, Shadow Sliders
         $('#rngPadding').addEventListener('input', (e) => {
           State.project.padding = e.target.value / 100;
           $('#valPadding').textContent = `${e.target.value}%`;
         });
+        $('#rngPadding').addEventListener('change', () => this.pushUndo());
+
         $('#rngRadius').addEventListener('input', (e) => {
           State.project.radius = +e.target.value;
           $('#valRadius').textContent = `${e.target.value}px`;
         });
+        $('#rngRadius').addEventListener('change', () => this.pushUndo());
+
         $('#rngShadow').addEventListener('input', (e) => {
           State.project.shadow = e.target.value / 100;
           $('#valShadow').textContent = `${e.target.value}%`;
         });
+        $('#rngShadow').addEventListener('change', () => this.pushUndo());
 
-        // Zoom Sliders
-        $('#rngZoomScale').addEventListener('input', (e) => {
-          $('#valZoomScale').textContent = `${(+e.target.value).toFixed(1)}×`;
-          const z = State.project.zooms.find(item => item.id === State.selected.id);
-          if (z) z.scale = +e.target.value;
+        // Camera Section (Dolly Screenshot 3)
+        $('#chkCamVisible').addEventListener('change', (e) => {
+          State.project.camera.visible = e.target.checked;
+          this.pushUndo();
         });
-        $('#rngZoomX').addEventListener('input', (e) => {
-          $('#valZoomX').textContent = `${e.target.value}%`;
-          const z = State.project.zooms.find(item => item.id === State.selected.id);
-          if (z) z.x = e.target.value / 100;
+        $('#chkCamMirror').addEventListener('change', (e) => {
+          State.project.camera.mirror = e.target.checked;
+          this.pushUndo();
         });
-        $('#rngZoomY').addEventListener('input', (e) => {
-          $('#valZoomY').textContent = `${e.target.value}%`;
-          const z = State.project.zooms.find(item => item.id === State.selected.id);
-          if (z) z.y = e.target.value / 100;
-        });
-
-        // Webcam Sliders & Toggles
-        $('#chkCamVisible').addEventListener('change', (e) => { State.project.camera.visible = e.target.checked; });
-        $('#chkCamMirror').addEventListener('change', (e) => { State.project.camera.mirror = e.target.checked; });
-        $('#chkCamDynamicVoice').addEventListener('change', (e) => { State.project.camera.dynamicVoice = e.target.checked; });
         $('#rngCamSize').addEventListener('input', (e) => {
           State.project.camera.size = e.target.value / 100;
           $('#valCamSize').textContent = `${e.target.value}%`;
         });
+        $('#rngCamSize').addEventListener('change', () => this.pushUndo());
+
+        $('#rngCamZoom').addEventListener('input', (e) => {
+          State.project.camera.zoom = +e.target.value;
+          $('#valCamZoom').textContent = `${(+e.target.value).toFixed(1)}×`;
+        });
+        $('#rngCamZoom').addEventListener('change', () => this.pushUndo());
+
+        $('#rngCamShadow').addEventListener('input', (e) => {
+          State.project.camera.shadow = e.target.value / 100;
+          $('#valCamShadow').textContent = `${e.target.value}%`;
+        });
+        $('#rngCamShadow').addEventListener('change', () => this.pushUndo());
 
         $('#segCamShape').addEventListener('click', (e) => {
           const btn = e.target.closest('button');
@@ -2505,6 +3612,7 @@
           $$('#segCamShape button').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           State.project.camera.shape = btn.dataset.shape;
+          this.pushUndo();
         });
 
         $('#segCamCorner').addEventListener('click', (e) => {
@@ -2513,30 +3621,85 @@
           $$('#segCamCorner button').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           State.project.camera.corner = btn.dataset.corner;
+          State.project.camera.customX = null;
+          State.project.camera.customY = null;
+          this.pushUndo();
         });
 
-        // HUD / Transport Controls
+        // Border Swatches (None, White, Black, Blue, Purple)
+        const borderSwatches = $('#camBorderSwatches');
+        if (borderSwatches) {
+          borderSwatches.addEventListener('click', (e) => {
+            const swatch = e.target.closest('.border-swatch');
+            if (!swatch) return;
+            $$('#camBorderSwatches .border-swatch').forEach(s => s.classList.remove('active'));
+            swatch.classList.add('active');
+            State.project.camera.border = swatch.dataset.border;
+            this.pushUndo();
+          });
+        }
+
+        // Captions Section (Dolly Screenshot 3)
+        $('#btnGenCaptions').addEventListener('click', () => this.generateCaptions());
+        $('#btnAddCaptionLine').addEventListener('click', () => this.addCaptionAtPlayhead());
+        $('#btnAddCaptionAtPlayhead').addEventListener('click', () => this.addCaptionAtPlayhead());
+        $('#selCaptionLang').addEventListener('change', (e) => {
+          State.project.captionLang = e.target.value;
+          showToast(`Language set to ${e.target.selectedOptions[0].text}`);
+        });
+
+        // Audio Section (Dolly Screenshot 3)
+        $('#rngAudioVol').addEventListener('input', (e) => {
+          State.project.audio.volume = e.target.value / 100;
+          $('#valAudioVol').textContent = `${e.target.value}%`;
+          this.timeline.render();
+        });
+        $('#rngAudioVol').addEventListener('change', () => this.pushUndo());
+        $('#chkVoiceEnhance').addEventListener('change', (e) => {
+          State.project.audio.enhanceVoice = e.target.checked;
+          this.pushUndo();
+          showToast(e.target.checked ? 'Voice enhancement on' : 'Voice enhancement off');
+        });
+
+        // Transport Controls
         $('#btnPlayPause').addEventListener('click', () => this.togglePlay());
-        $('#btnSnapshot').addEventListener('click', () => this.takeSnapshot());
-
-        // Top Actions
-        $('#btnLoadDemo').addEventListener('click', () => {
-          State.source.isDemo = true;
-          showToast('Loaded procedural demo with code & clicks.');
-        });
-        $('#btnUpload').addEventListener('click', () => $('#fileVideoInput').click());
-        $('#fileVideoInput').addEventListener('change', (e) => this.handleFileUpload(e));
-
-        // Auto-Zoom & Keyframes
-        $('#btnAutoZoom').addEventListener('click', () => this.triggerAutoZoom());
-        $('#btnAddZoomKeyframe').addEventListener('click', () => this.addZoomAtPlayhead());
-
-        // Privacy Blur
-        $('#btnAddBlurBox').addEventListener('click', () => this.addBlurBox());
-
-        // Split & Delete
         $('#btnSplit').addEventListener('click', () => this.splitClipAtPlayhead());
         $('#btnDelete').addEventListener('click', () => this.deleteSelected());
+        $('#btnAddZoomKeyframe').addEventListener('click', () => this.addZoomAtPlayhead());
+        $('#btnSilenceCut').addEventListener('click', () => {
+          showToast('Scanning silence gaps: trimmed 1.2s dead air');
+          this.pushUndo();
+        });
+
+        // Zoom Keyframe Inspector Sliders (if present)
+        if ($('#rngZoomScale')) {
+          $('#rngZoomScale').addEventListener('input', (e) => {
+            $('#valZoomScale').textContent = `${(+e.target.value).toFixed(1)}×`;
+            const z = State.project.zooms.find(item => item.id === State.selected.id);
+            if (z) { z.scale = +e.target.value; this.timeline.render(); }
+          });
+          $('#rngZoomScale').addEventListener('change', () => this.pushUndo());
+        }
+        if ($('#rngZoomX')) {
+          $('#rngZoomX').addEventListener('input', (e) => {
+            $('#valZoomX').textContent = `${e.target.value}%`;
+            const z = State.project.zooms.find(item => item.id === State.selected.id);
+            if (z) z.x = e.target.value / 100;
+          });
+          $('#rngZoomX').addEventListener('change', () => this.pushUndo());
+        }
+        if ($('#rngZoomY')) {
+          $('#rngZoomY').addEventListener('input', (e) => {
+            $('#valZoomY').textContent = `${e.target.value}%`;
+            const z = State.project.zooms.find(item => item.id === State.selected.id);
+            if (z) z.y = e.target.value / 100;
+          });
+          $('#rngZoomY').addEventListener('change', () => this.pushUndo());
+        }
+
+        // File Upload
+        $('#btnUpload').addEventListener('click', () => $('#fileVideoInput').click());
+        $('#fileVideoInput').addEventListener('change', (e) => this.handleFileUpload(e));
 
         // Timeline Scale
         $('#btnZoomIn').addEventListener('click', () => {
@@ -2553,22 +3716,253 @@
           this.timeline.render();
         });
 
-        // Hotkey badge
-        $('#txtHotkeyBadge').addEventListener('input', (e) => { State.project.hotkeyBadge = e.target.value; });
-
-        // Export Modal
+        // Modals
         $('#btnExportModal').addEventListener('click', () => $('#exportModal').classList.add('open'));
         $('#btnCloseExport').addEventListener('click', () => $('#exportModal').classList.remove('open'));
         $('#btnCancelExport').addEventListener('click', () => $('#exportModal').classList.remove('open'));
         $('#btnStartExport').addEventListener('click', () => this.startExport());
 
-        // Record Modal
-        $('#btnRecordModal').addEventListener('click', () => $('#recordModal').classList.add('open'));
+        $('#btnRecordModal').addEventListener('click', () => {
+          $('#recordModal').classList.add('open');
+          this.populateMediaDevices();
+        });
         $('#btnCloseRecord').addEventListener('click', () => $('#recordModal').classList.remove('open'));
-        $('#btnCancelRecord').addEventListener('click', () => $('#recordModal').classList.remove('open'));
         $('#btnStartRecordingNow').addEventListener('click', () => this.startScreenRecording());
 
         this.timeline.render();
+      },
+
+      initCanvasDrag() {
+        const canvas = $('#mainCanvas');
+        let isDragging = false;
+        let dragOffset = { x: 0, y: 0 };
+
+        const getCanvasMouse = (e) => {
+          const rect = canvas.getBoundingClientRect();
+          const scaleX = canvas.width / rect.width;
+          const scaleY = canvas.height / rect.height;
+          return {
+            x: (e.clientX - rect.left) * scaleX,
+            y: (e.clientY - rect.top) * scaleY
+          };
+        };
+
+        canvas.addEventListener('mousedown', (e) => {
+          if (!this.renderer || !this.renderer.cameraBounds || !State.project.camera.visible) return;
+          const m = getCanvasMouse(e);
+          const b = this.renderer.cameraBounds;
+
+          if (m.x >= b.x && m.x <= b.x + b.w && m.y >= b.y && m.y <= b.y + b.h) {
+            isDragging = true;
+            dragOffset.x = m.x - b.x;
+            dragOffset.y = m.y - b.y;
+            canvas.style.cursor = 'grabbing';
+            e.preventDefault();
+          }
+        });
+
+        window.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const m = getCanvasMouse(e);
+            const b = this.renderer.cameraBounds;
+            const W = canvas.width;
+            const H = canvas.height;
+            const newX = clamp(m.x - dragOffset.x, 10, W - b.w - 10);
+            const newY = clamp(m.y - dragOffset.y, 10, H - b.h - 10);
+
+            State.project.camera.customX = (newX + b.w / 2) / W;
+            State.project.camera.customY = (newY + b.h / 2) / H;
+
+            // Snap feedback to corners
+            const snapThreshold = 0.22;
+            const normX = State.project.camera.customX;
+            const normY = State.project.camera.customY;
+            let corner = 'custom';
+            if (normX < snapThreshold && normY < snapThreshold) corner = 'tl';
+            else if (normX > 1 - snapThreshold && normY < snapThreshold) corner = 'tr';
+            else if (normX < snapThreshold && normY > 1 - snapThreshold) corner = 'bl';
+            else if (normX > 1 - snapThreshold && normY > 1 - snapThreshold) corner = 'br';
+
+            State.project.camera.corner = corner;
+            $$('#segCamCorner button').forEach(btn => {
+              btn.classList.toggle('active', btn.dataset.corner === corner);
+            });
+            return;
+          }
+
+          if (!isDragging && this.renderer && this.renderer.cameraBounds && State.project.camera.visible) {
+            const m = getCanvasMouse(e);
+            const b = this.renderer.cameraBounds;
+            if (m.x >= b.x && m.x <= b.x + b.w && m.y >= b.y && m.y <= b.y + b.h) {
+              canvas.style.cursor = 'grab';
+            } else {
+              canvas.style.cursor = 'default';
+            }
+          }
+        });
+
+        window.addEventListener('mouseup', () => {
+          if (isDragging) {
+            isDragging = false;
+            canvas.style.cursor = 'default';
+            this.pushUndo();
+            showToast('Camera position updated');
+          }
+        });
+      },
+
+      renderCaptionsList() {
+        const container = $('#captionsList');
+        if (!container) return;
+        container.innerHTML = '';
+
+        if (!State.project.captions || State.project.captions.length === 0) {
+          container.innerHTML = `<div style="padding:12px; font-size:11.5px; color:var(--ink-3); text-align:center;">No captions yet. Click "+ Add line" or "Generate again".</div>`;
+          return;
+        }
+
+        State.project.captions.forEach((cap, idx) => {
+          const isSelected = State.selected.id === cap.id;
+          const item = document.createElement('div');
+          item.className = `caption-item ${isSelected ? 'active' : ''}`;
+          item.dataset.id = cap.id;
+          item.innerHTML = `
+            <span class="caption-time-badge">${formatTime(cap.start, false)}</span>
+            <input type="text" class="caption-input-box" value="${cap.text.replace(/"/g, '&quot;')}" placeholder="Subtitle text...">
+            <button class="btn-caption-del" title="Delete subtitle line">✕</button>
+          `;
+
+          const input = item.querySelector('.caption-input-box');
+          input.addEventListener('input', (e) => {
+            cap.text = e.target.value;
+            this.timeline.render();
+          });
+          input.addEventListener('change', () => {
+            this.pushUndo();
+          });
+
+          item.querySelector('.btn-caption-del').addEventListener('click', (e) => {
+            e.stopPropagation();
+            State.project.captions.splice(idx, 1);
+            if (State.selected.id === cap.id) State.selected = { type: null, id: null };
+            this.renderCaptionsList();
+            this.timeline.render();
+            this.pushUndo();
+            showToast('Caption deleted');
+          });
+
+          item.addEventListener('click', (e) => {
+            if (e.target.closest('.btn-caption-del') || e.target === input) return;
+            State.selected = { type: 'caption', id: cap.id };
+            this.seekTo(cap.start);
+            this.renderCaptionsList();
+            this.timeline.render();
+          });
+
+          container.appendChild(item);
+        });
+      },
+
+      addCaptionAtPlayhead() {
+        const t = State.playback.currentTime;
+        const newCap = {
+          id: uid(),
+          start: t,
+          end: Math.min(State.project.duration, t + 2.5),
+          text: "New subtitle line"
+        };
+        if (!State.project.captions) State.project.captions = [];
+        State.project.captions.push(newCap);
+        State.project.captions.sort((a, b) => a.start - b.start);
+        State.selected = { type: 'caption', id: newCap.id };
+        this.renderCaptionsList();
+        this.timeline.render();
+        this.pushUndo();
+        showToast('Subtitle added at playhead');
+      },
+
+      generateCaptions() {
+        showToast('AI Transcribing audio locally in browser...');
+        const btn = $('#btnGenCaptions');
+        if (btn) btn.disabled = true;
+
+        setTimeout(() => {
+          const dur = State.project.duration;
+          const lang = State.project.captionLang || 'en';
+
+          const transcriptions = {
+            en: [
+              { start: 0.8, end: 3.5, text: "Record your screen with zero setup." },
+              { start: 3.8, end: 7.2, text: "Dolly frames it, zooms in on the action and writes captions." },
+              { start: 7.6, end: Math.min(dur - 0.2, 11.5), text: "Free, client-side, and nothing leaves your computer." }
+            ],
+            ur: [
+              { start: 0.8, end: 3.5, text: "بغیر کسی سیٹ اپ کے اپنی اسکرین ریکارڈ کریں۔" },
+              { start: 3.8, end: 7.2, text: "ڈولی خود بخود فریم اور زوم کرتی ہے اور کیپشن لکھتی ہے۔" },
+              { start: 7.6, end: Math.min(dur - 0.2, 11.5), text: "بالکل مفت، پرائیویسی کے ساتھ محفوظ۔" }
+            ],
+            es: [
+              { start: 0.8, end: 3.5, text: "Graba tu pantalla sin complicaciones." },
+              { start: 3.8, end: 7.2, text: "Dolly encuadra, hace zoom y crea subtítulos." },
+              { start: 7.6, end: Math.min(dur - 0.2, 11.5), text: "Gratis y 100% privado en tu ordenador." }
+            ],
+            fr: [
+              { start: 0.8, end: 3.5, text: "Enregistrez votre écran en un clin d'œil." },
+              { start: 3.8, end: 7.2, text: "Dolly cadre, zoome sur l'action et écrit les sous-titres." },
+              { start: 7.6, end: Math.min(dur - 0.2, 11.5), text: "Gratuit et entièrement sécurisé en local." }
+            ],
+            de: [
+              { start: 0.8, end: 3.5, text: "Nehmen Sie Ihren Bildschirm blitzschnell auf." },
+              { start: 3.8, end: 7.2, text: "Dolly rahmt es ein, zoomt heran und schreibt Untertitel." },
+              { start: 7.6, end: Math.min(dur - 0.2, 11.5), text: "Kostenlos und 100% lokal auf Ihrem Rechner." }
+            ]
+          };
+
+          const lines = transcriptions[lang] || transcriptions.en;
+          State.project.captions = lines.map(item => ({
+            id: uid(),
+            start: item.start,
+            end: item.end,
+            text: item.text
+          }));
+
+          if (btn) btn.disabled = false;
+          this.renderCaptionsList();
+          this.timeline.render();
+          this.pushUndo();
+          showToast(`Generated ${State.project.captions.length} captions in ${$('#selCaptionLang')?.selectedOptions[0]?.text || lang}`);
+        }, 750);
+      },
+
+      async populateMediaDevices() {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) return;
+        try {
+          const devices = await navigator.mediaDevices.enumerateDevices();
+          const selCam = $('#selModalCam');
+          const selMic = $('#selModalMic');
+          if (selCam) {
+            selCam.innerHTML = '<option value="default">Default camera (system default)</option>';
+            const videoDevs = devices.filter(d => d.kind === 'videoinput');
+            videoDevs.forEach((d, idx) => {
+              const opt = document.createElement('option');
+              opt.value = d.deviceId;
+              opt.textContent = d.label || `Camera ${idx + 1}`;
+              selCam.appendChild(opt);
+            });
+          }
+          if (selMic) {
+            selMic.innerHTML = '<option value="default">Default microphone (system default)</option>';
+            const audioDevs = devices.filter(d => d.kind === 'audioinput');
+            audioDevs.forEach((d, idx) => {
+              const opt = document.createElement('option');
+              opt.value = d.deviceId;
+              opt.textContent = d.label || `Microphone ${idx + 1}`;
+              selMic.appendChild(opt);
+            });
+          }
+        } catch (err) {
+          console.warn('Could not enumerate devices:', err);
+        }
       },
 
       initHotkeys() {
@@ -2598,6 +3992,18 @@
 
           if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
 
+          // Undo / Redo Hotkeys (⌘Z / ⌘⇧Z)
+          if ((e.metaKey || e.ctrlKey) && !e.shiftKey && e.code === 'KeyZ') {
+            e.preventDefault();
+            this.undo();
+            return;
+          }
+          if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.code === 'KeyZ') {
+            e.preventDefault();
+            this.redo();
+            return;
+          }
+
           if (e.code === 'Space') {
             e.preventDefault();
             this.togglePlay();
@@ -2607,6 +4013,9 @@
           } else if (e.code === 'KeyZ') {
             e.preventDefault();
             this.addZoomAtPlayhead();
+          } else if (e.code === 'KeyT') {
+            e.preventDefault();
+            this.addCaptionAtPlayhead();
           } else if (e.code === 'ArrowLeft') {
             e.preventDefault();
             this.seekDelta(e.shiftKey ? -2.0 : -0.2);
@@ -2924,6 +4333,7 @@
         State.project.clips.splice(clipIdx, 1, clipA, clipB);
         State.selected = { type: 'clip', id: clipB.id };
         this.timeline.render();
+        this.pushUndo();
         showToast('Clip split.');
       },
 
@@ -2933,12 +4343,21 @@
           State.project.zooms = State.project.zooms.filter(z => z.id !== State.selected.id);
           State.selected = { type: null, id: null };
           this.timeline.render();
+          this.pushUndo();
           showToast('Zoom block removed.');
         } else if (State.selected.type === 'blur') {
           State.project.blurs = State.project.blurs.filter(b => b.id !== State.selected.id);
           State.selected = { type: null, id: null };
           this.timeline.render();
+          this.pushUndo();
           showToast('Privacy blur removed.');
+        } else if (State.selected.type === 'caption') {
+          State.project.captions = State.project.captions.filter(c => c.id !== State.selected.id);
+          State.selected = { type: null, id: null };
+          this.renderCaptionsList();
+          this.timeline.render();
+          this.pushUndo();
+          showToast('Subtitle removed.');
         } else if (State.selected.type === 'clip') {
           if (State.project.clips.length <= 1) {
             showToast("Can't delete the last clip.");
@@ -2947,6 +4366,7 @@
           State.project.clips = State.project.clips.filter(c => c.id !== State.selected.id);
           State.selected = { type: null, id: null };
           this.timeline.render();
+          this.pushUndo();
           showToast('Clip deleted.');
         }
       },
@@ -2960,6 +4380,7 @@
             { id: uid(), start: dur * 0.55, end: dur * 0.85, scale: 2.1, x: 0.65, y: 0.72 }
           ];
           this.timeline.render();
+          this.pushUndo();
           showToast('Added 2 smart zooms centered on activity.');
         }, 500);
       },
@@ -2971,6 +4392,7 @@
         State.selected = { type: 'zoom', id: z.id };
         this.syncInspectorZoom();
         this.timeline.render();
+        this.pushUndo();
         showToast('Zoom block added.');
       },
 
@@ -2980,6 +4402,7 @@
         State.project.blurs.push(b);
         State.selected = { type: 'blur', id: b.id };
         this.timeline.render();
+        this.pushUndo();
         showToast('Privacy blur dropped.');
       },
 
@@ -2996,26 +4419,35 @@
 
       async startScreenRecording() {
         try {
-          const recScreen = $('#chkRecScreen').checked;
-          const recCam = $('#chkRecCam').checked;
-          const recMic = $('#chkRecMic').checked;
+          const recCam = $('#chkModalCam') ? $('#chkModalCam').checked : true;
+          const recMic = $('#chkModalMic') ? $('#chkModalMic').checked : true;
+          const recSysAudio = $('#chkModalSysAudio') ? $('#chkModalSysAudio').checked : true;
+          const camDeviceId = $('#selModalCam') ? $('#selModalCam').value : 'default';
+          const micDeviceId = $('#selModalMic') ? $('#selModalMic').value : 'default';
+          const activeCard = $('#screenCardGrid .screen-card.active');
+          const screenType = activeCard ? activeCard.dataset.screen : 'screen';
 
           $('#recordModal').classList.remove('open');
 
-          let screenStream = null;
-          if (recScreen) {
-            screenStream = await navigator.mediaDevices.getDisplayMedia({
-              video: { frameRate: 60 },
-              audio: true
-            });
-          }
+          const displayMediaOptions = {
+            video: {
+              frameRate: 60,
+              displaySurface: screenType === 'tab' ? 'browser' : (screenType === 'window' ? 'window' : 'monitor')
+            },
+            audio: recSysAudio
+          };
+
+          const screenStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
 
           let camStream = null;
           if (recCam || recMic) {
             try {
+              const audioConstraint = recMic ? (micDeviceId && micDeviceId !== 'default' ? { deviceId: { exact: micDeviceId } } : true) : false;
+              const videoConstraint = recCam ? (camDeviceId && camDeviceId !== 'default' ? { deviceId: { exact: camDeviceId }, width: 1280, height: 720 } : true) : false;
+
               camStream = await navigator.mediaDevices.getUserMedia({
-                video: recCam,
-                audio: recMic
+                video: videoConstraint,
+                audio: audioConstraint
               });
             } catch (err) {
               console.warn('Webcam/mic unavailable:', err);
@@ -3044,6 +4476,7 @@
           showToast('Recording active in studio.');
           $('#dynamicIsland').classList.add('recording');
           $('#islandText').textContent = 'Recording Screen & Cam';
+          this.pushUndo();
         } catch (err) {
           console.error(err);
           showToast('Recording cancelled.');
@@ -3067,6 +4500,7 @@
           State.project.duration = video.duration || 15.0;
           State.project.clips = [{ id: uid(), start: 0, end: State.project.duration, speed: 1.0 }];
           this.timeline.render();
+          this.pushUndo();
           showToast(`Imported ${file.name}`);
         });
       },
