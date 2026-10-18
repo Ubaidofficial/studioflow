@@ -1,4 +1,8 @@
-# Dolly StudioFlow 2026 — In-Browser Screen Studio & Video Editor
+<p align="center">
+  <img src="logo.svg" alt="StudioFlow" width="240" />
+</p>
+
+# StudioFlow — In-Browser Screen Studio & Video Editor
 
 > **A professional, 100% client-side screen recorder and video studio in a single standalone HTML file.**  
 > Faithfully embodying and enhancing the design and workflow of [Dolly](https://dolly-zee.vercel.app/) and [Bolo](https://github.com/NakliTechie/Bolo), fused with 2026 design system patterns from [shadcn/ui](https://github.com/shadcn-ui/ui), [cult-ui](https://github.com/nolly-studio/cult-ui), [animate-ui](https://github.com/imskyleen/animate-ui), [sona-ui](https://github.com/Dinil-Thilakarathne/sona-ui), [velora-ui](https://github.com/ColorlibHQ/velora-ui), and [EasyUI](https://github.com/Surajmaurya1/easyui).  
@@ -124,11 +128,25 @@ Then visit **`http://localhost:4173`** in your browser.
 
 ---
 
+## 💎 Brand Identity & Vector Assets
+
+StudioFlow features a minimal, modern 2026 brand identity built around the **Dual-Track Monogram**:
+- **Design Philosophy**: Fuses the essence of a recording studio (aperture, lens, focal center) with continuous workflow (two counter-balanced timeline tracks forming an iconic "S" monogram).
+- **Optical Precision**: Perfectly balanced cubic Bézier curvature with round caps, delivering immediate legibility from a 16px favicon up to high-DPI retina displays.
+- **Adaptive Typography**: Features responsive SVG typography that harmonizes with both dark and light modes automatically.
+
+---
+
 ## 📁 Repository Structure
 
 ```text
 .
 ├── index.html               # 100% self-contained application (UI, Canvas engine, WebCodecs pipeline)
+├── logo.svg                 # Full vector horizontal lockup (Dual-Track mark + adaptive typography)
+├── logo-mark.svg            # Standalone high-res squircle app mark with deep midnight gradients
+├── logo-symbol.svg          # Pure vector glyph without background for flexible integration
+├── favicon.svg              # Pixel-perfect 32x32 SVG favicon for browser tabs
+├── logo-showcase.html       # Brand identity exploration lab & design system comparison
 ├── vendor/
 │   ├── mp4-muxer.min.js     # WebCodecs MP4 multiplexer library
 │   └── webm-muxer.min.js    # WebCodecs WebM multiplexer fallback
